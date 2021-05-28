@@ -4,7 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
 
-public class DbMaker {		//출력 결과를 text파일로
+public class DbMaker {		
 	
 	public static void main(String[] args) {
 		PrintStream ps = null;

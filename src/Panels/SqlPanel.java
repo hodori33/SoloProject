@@ -27,7 +27,7 @@ public class SqlPanel extends BasePanel {
 		MainFrame.f.add(sqlP);
 	}
 
-	// « ø‰«—∞ÕµÈ ∞¥√º ª˝º∫
+	// Í∞ùÏ≤¥ ÏÉùÏÑ±
 	private void newSql() {
 		nameP = new Panel();
 		lb = new Label("ccccccccccccc");
@@ -36,13 +36,13 @@ public class SqlPanel extends BasePanel {
 		homeB = new Button("Home");
 		optionB = new Button("Option");
 		logoutB = new Button("Logout");
-		font1 = new Font("±º∏≤", Font.BOLD, 15);
+		font1 = new Font("Í≥†Îîï", Font.BOLD, 15);
 	}
 
-	// ¿ßƒ° ºº∆√
+	// Í∞ùÏ≤¥ ÏÑ§Ï†ï
 	private void setSql() {
 		namePanel();
-		setLabel();
+		label();
 		choice1();
 		textField();
 		homeButton();
@@ -51,7 +51,7 @@ public class SqlPanel extends BasePanel {
 		logoutButton();
 	}
 
-	// ∆‰≥Œø° √ﬂ∞°
+	// Ìå®ÎÑêÏóê Ï∂îÍ∞Ä
 	private void addSql() {
 		nameP.add(lb);
 		sqlP.add(nameP);

@@ -27,7 +27,7 @@ public class TermPanel extends BasePanel {
 		MainFrame.f.add(termP);
 	}
 
-	// ÇÊ¿äÇÑ°Íµé °´Ã¼ »ı¼º
+	// ê°ì²´ ìƒì„±
 	private void newApi() {
 		nameP = new Panel();
 		lb = new Label("bbbbbbbbbbbbb");
@@ -36,13 +36,13 @@ public class TermPanel extends BasePanel {
 		homeB = new Button("Home");
 		optionB = new Button("Option");
 		logoutB = new Button("Logout");
-		font1 = new Font("±¼¸²", Font.BOLD, 15);
+		font1 = new Font("ê³ ë”•", Font.BOLD, 15);
 	}
 
-	// À§Ä¡ ¼¼ÆÃ
+	// ê°ì²´ ì„¤ì •
 	private void setApi() {
 		namePanel();
-		setLabel();
+		label();
 		choice1();
 		textField();
 		homeButton();
@@ -51,7 +51,7 @@ public class TermPanel extends BasePanel {
 		logoutButton();
 	}
 
-	// Æä³Î¿¡ Ãß°¡
+	// íŒ¨ë„ì— ì¶”ê°€
 	private void addApi() {
 		nameP.add(lb);
 		termP.add(nameP);

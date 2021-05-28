@@ -6,14 +6,16 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Label;
 import java.awt.Panel;
+import java.awt.TextArea;
 import java.awt.TextField;
 
 import Buttons.ActButton;
+import Buttons.ChoiceHandler;
 import Main.MainFrame;
 
 public class ApiPanel extends BasePanel {
 	private Panel apiP;
-	private String[] str = { "aa", "bb", "cc", "dd", "ee" };
+	private String[] str = { "aa", "bb"};
 	
 
 	public ApiPanel() {
@@ -26,35 +28,48 @@ public class ApiPanel extends BasePanel {
 		setApi();
 		addApi();
 		
-		// ���̽� ����
+	//	conTa.setText("");
+		
+		// 초이스 샘플
 		for (int i = 0; i < str.length; i++) {
 			c1.add(str[i]);
-			c2.add(str[i]);
-		}		
+		}
+		// 1번 초이스에 넣을 내용을 db에서 가져와서 배열에 저장해야됨
+		// 1번초이스 선택 - 배열에 들어있는 String 을 db table 에서 검색
+		// 그 테이블을 2번 초이스에 추가 시키기 마찬가지로 배열로?
+		// 2번 초이스 선택 - 배열에 들어있는 String을 db table검색
+		// 그 내용을 textarea에 출력.
+
 		MainFrame.f.add(apiP);
 	}
 
-	// �ʿ��Ѱ͵� ��ü ����
+	// 필요한 객체 생성
 	private void newApi() {
 		nameP = new Panel();
-		lb = new Label("�� ���� �߰��� �ȵ˴ϴ�.");  //!!!!!!!!!!!!!!!!!
+		contentsP = new Panel();
+		conTa = new TextArea("",0,0,TextArea.SCROLLBARS_VERTICAL_ONLY);
+		lb = new Label("abcde");  //라벨 수정 필요
 		c1 = new Choice();
 		c2 = new Choice();
-		serchTf = new TextField("�˻���");
+		serchTf = new TextField("검색창");
 		homeB = new Button("Home");
 		optionB = new Button("Option");
 		logoutB = new Button("Logout");
 		compileB = new Button("Compile");
-		font1 = new Font("����", Font.BOLD, 15);
+		font1 = new Font("고딕", Font.BOLD, 15);
+		font2 = new Font("고딕", Font.BOLD, 18);
 
 	}
 	
-	// ��ġ ����
+	// 객체들 세팅
 	private void setApi() {
 		namePanel();
-		setLabel();	//	 �� ����!!!!!!!!!!!!!!!!!!!!!
+		contentsP();
+		textarea();
+		label();	//라벨 수정 필요
 		choice1();
 		choice2();
+		c1.addItemListener(new ChoiceHandler(c1, c2));
 		homeButton();
 		homeB.addActionListener(new ActButton(apiP));
 		optionButton();
@@ -64,10 +79,12 @@ public class ApiPanel extends BasePanel {
 		textField();
 	}
 
-	// ��ο� �߰�
+	// 패널에 추가
 	private void addApi() {
-		nameP.add(lb);		//�� �߰�!!!!!!!!!!!!!
+		nameP.add(lb);	//라벨 수정 필요
+		contentsP.add(conTa);
 		apiP.add(nameP);
+		apiP.add(contentsP);
 		apiP.add(c1);
 		apiP.add(c2);
 		apiP.add(serchTf);
@@ -75,6 +92,7 @@ public class ApiPanel extends BasePanel {
 //		apiP.add(optionB);
 //		apiP.add(logoutB);
 		apiP.add(compileB);
+		
 
 	}
 

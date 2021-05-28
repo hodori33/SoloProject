@@ -21,17 +21,17 @@ public class ActButton implements ActionListener {
 
 	public ActButton() {
 	}
-	// 페널 정보를 가져옴
+	
 	public ActButton(Panel p) {
 		this.p = p;
 	}
 
-	// textarea 정보를 가져옴
+	
 	public ActButton(TextArea ta) {
 		this.ta = ta;
 	}
 
-	// 버튼 정보를 가져옴
+	
 	public ActButton(Button b1, Button b2) {
 		this.b1 = b1;
 		this.b2 = b2;
@@ -70,7 +70,7 @@ public class ActButton implements ActionListener {
 			new ApiPanel();
 		}
 
-		if (e.getActionCommand().equals("Java 용어")) {
+		if (e.getActionCommand().equals("Java Term")) {
 			p.setVisible(false);
 			new TermPanel();
 		}

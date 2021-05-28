@@ -10,7 +10,7 @@ import Main.MainFrame;
 public class HomePanel {
 	private Panel homeP;
 	private Button[] b;
-	private String[] bName = { "Java API", "Java ¿ë¾î", "SQL" };
+	private String[] bName = { "Java API", "Java Term", "SQL" };
 
 	public HomePanel() {
 		homeP = new Panel();
