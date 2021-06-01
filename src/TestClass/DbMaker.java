@@ -1,4 +1,4 @@
-package DbMaker;
+package TestClass;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;

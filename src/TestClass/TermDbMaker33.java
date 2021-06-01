@@ -1,4 +1,4 @@
-package DbMaker;
+package TestClass;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -6,10 +6,12 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 
-public class TermDbMaker {
+import DbMaker.MemberDAO;
+
+public class TermDbMaker33 {
 	private MemberDAO dao = new MemberDAO();
 
-	public TermDbMaker() {
+	public TermDbMaker33() {
 		dao.connDB();
 	}
 
@@ -21,27 +23,28 @@ public class TermDbMaker {
 		String name, data;
 		int cnt = 1;
 		try {
-			r = new FileReader("C:\\Users\\hodori\\Desktop\\db만들기\\Term.txt");
+			r = new FileReader("C:\\Users\\hodori\\Desktop\\가나.txt");
 			reader = new BufferedReader(r);
-			dao.createTermTable(); // TermTable생성
+
+			dao.createTermTable(); // TermTable�깮�꽦
 
 			while (true) {
-				name = reader.readLine(); // term_name용
+				name = reader.readLine(); // term_name�슜
 				if (name == null) {
 					break;
 				}
 				while (true) {
-					data = reader.readLine(); // 두번째 라인부터
-					if (data.equals("@@") || data == null) { // @@ 이거나 널이면 종료 //null체크가 안됨.
+					data = reader.readLine(); // �몢踰덉㎏ �씪�씤遺��꽣
+					if (data.equals("@@") || data == null) { // @@ �씠嫄곕굹 �꼸�씠硫� 醫낅즺 //null泥댄겕媛� �븞�맖.
 						break;
 					}
 					System.out.println(data);
-					String arr = data.toString() + "\n"; // temp 문장 이어 붙이기
+					String arr = data.toString() + "\n"; // temp 臾몄옣 �씠�뼱 遺숈씠湲�
 					temp += arr;
 				}
-				dao.addTerm(cnt, name, temp); // temp로 name테이블의 contents항목에 insert.
+				dao.addTerm(cnt, name, temp); // temp濡� name�뀒�씠釉붿쓽 contents�빆紐⑹뿉 insert.
 				temp = "";
-				cnt++; // 넘버링
+				cnt++; // �꽆踰꾨쭅
 			}
 
 		} catch (FileNotFoundException e) {

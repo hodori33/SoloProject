@@ -6,6 +6,8 @@ import java.awt.TextArea;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import DbMaker.SqlDbMaker;
+import DbMaker.TermDbMaker;
 import EtcPanels.CompilePanel;
 import Panels.ApiPanel;
 import Panels.HomePanel;
@@ -65,7 +67,7 @@ public class ActButton implements ActionListener {
 			b2.setVisible(true);
 		}
 
-		if (e.getActionCommand().equals("Java API")) {
+		if (e.getActionCommand().equals("Java Funtion")) {
 			p.setVisible(false);
 			new ApiPanel();
 		}
@@ -78,6 +80,29 @@ public class ActButton implements ActionListener {
 		if (e.getActionCommand().equals("SQL")) {
 			p.setVisible(false);
 			new SqlPanel();
+		}
+		if (e.getActionCommand().equals("Funtion DB")) {
+		
+		}
+		if (e.getActionCommand().equals("Funtion DB Remove")) {
+			
+		}
+		if (e.getActionCommand().equals("Term DB")) {
+			TermDbMaker tdm = new TermDbMaker();
+			tdm.createTermTable();
+			
+		}
+		if (e.getActionCommand().equals("Term DB Remove")) {
+			TermDbMaker tdm = new TermDbMaker();
+			tdm.removeTermTable();
+		}
+		if (e.getActionCommand().equals("SQL DB")) {
+			SqlDbMaker sdm = new SqlDbMaker();
+			sdm.createSqlTable();
+		}
+		if (e.getActionCommand().equals("SQL DB Remove")) {
+			SqlDbMaker sdm = new SqlDbMaker();
+			sdm.removeSqlTable();;
 		}
 
 		if (e.getActionCommand().equals("Run")) {

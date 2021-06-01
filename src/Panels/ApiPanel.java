@@ -56,7 +56,7 @@ public class ApiPanel extends BasePanel {
 		optionB = new Button("Option");
 		logoutB = new Button("Logout");
 		compileB = new Button("Compile");
-		font1 = new Font("고딕", Font.BOLD, 15);
+		font1 = new Font("궁서", Font.BOLD, 10);
 		font2 = new Font("고딕", Font.BOLD, 18);
 
 	}

@@ -6,14 +6,14 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 
-public class TermDbMaker {
+public class SqlDbMaker {
 	private MemberDAO dao = new MemberDAO();
 
-	public TermDbMaker() {
+	public SqlDbMaker() {
 		dao.connDB();
 	}
 
-	public void createTermTable() {
+	public void createSqlTable() {
 		BufferedReader reader = null;
 		Reader r = null;
 		String temp = "";
@@ -21,9 +21,10 @@ public class TermDbMaker {
 		String name, data;
 		int cnt = 1;
 		try {
-			r = new FileReader("C:\\Users\\hodori\\Desktop\\db만들기\\Term.txt");
+			r = new FileReader("C:\\Users\\hodori\\Desktop\\db만들기\\Sql.txt");
 			reader = new BufferedReader(r);
-			dao.createTermTable(); // TermTable생성
+
+			dao.createSqlTable(); // TermTable생성
 
 			while (true) {
 				name = reader.readLine(); // term_name용
@@ -39,7 +40,7 @@ public class TermDbMaker {
 					String arr = data.toString() + "\n"; // temp 문장 이어 붙이기
 					temp += arr;
 				}
-				dao.addTerm(cnt, name, temp); // temp로 name테이블의 contents항목에 insert.
+				dao.addSql(cnt, name, temp); // temp로 name테이블의 contents항목에 insert.
 				temp = "";
 				cnt++; // 넘버링
 			}
@@ -51,8 +52,8 @@ public class TermDbMaker {
 		}
 	}
 
-	public void removeTermTable() {
-		dao.removeTermTable();
+	public void removeSqlTable() {
+		dao.removeSqlTable();
 	}
 
 }
