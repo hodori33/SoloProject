@@ -17,10 +17,28 @@ public class MemberDAO {
 	private Statement stmt;
 	private String query;
 	private ResultSet rs;
+	private ArrayList<MemberVo> list;
+	
+	public ArrayList<MemberVo> serchDB(String str, String Choice, String serch){
+		list = new ArrayList<MemberVo>();
+		try {
+			connDB();
 
+			query = "select " + str + "_name from java_" + str+" where "+str+"_name like '%"+serch.toUpperCase()+"%'";
+			rs = stmt.executeQuery(query);
+			while (rs.next()) {
+				String name = rs.getString(str + "_name");
+				MemberVo data = new MemberVo(name);
+				list.add(data);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
 	// 목록 조회
 	public ArrayList<MemberVo> selectDB(String str) {
-		ArrayList<MemberVo> list = new ArrayList<MemberVo>();
+		list = new ArrayList<MemberVo>();
 		try {
 			connDB();
 
@@ -44,9 +62,12 @@ public class MemberDAO {
 			query = "select " + cName + "_contents from java_" + cName + " where " + cName + "_name = '"
 					+ name.toUpperCase() + "'";
 			rs = stmt.executeQuery(query);
-			rs.next();
-			System.out.println(rs.getString(1));
-			str = rs.getString(1);
+			
+			if(rs.next()) {
+				str = rs.getString(1);
+				System.out.println(rs.getString(1));
+			}
+
 
 		} catch (SQLException e) {
 			e.printStackTrace();

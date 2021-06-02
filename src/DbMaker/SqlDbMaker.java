@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
+import java.nio.charset.StandardCharsets;
 
 public class SqlDbMaker {
 	private MemberDAO dao = new MemberDAO();
@@ -21,7 +22,7 @@ public class SqlDbMaker {
 		String name, data;
 		int cnt = 1;
 		try {
-			r = new FileReader("C:\\Users\\hodori\\Desktop\\db만들기\\Sql.txt");
+			r = new FileReader("C:\\Users\\hodori\\Desktop\\db만들기\\Sql.txt", StandardCharsets.UTF_8);
 			reader = new BufferedReader(r);
 
 			dao.createSqlTable(); // TermTable생성
