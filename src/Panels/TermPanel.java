@@ -8,6 +8,8 @@ import java.awt.Label;
 import java.awt.Panel;
 import java.awt.TextArea;
 import java.awt.TextField;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import Buttons.ActButton;
@@ -20,13 +22,14 @@ public class TermPanel extends BasePanel {
 	private Panel termP;
 	private ArrayList<MemberVo> list;
 	private final String className = "Term";
-
+	
 	public TermPanel() {
 		termP = new Panel();
 		termP.setLayout(null);
 		termP.setBackground(Color.green);
 		termP.setBounds(10, 10, 680, 700);
-		OnOff = true;
+		OnOff1 = true;
+		OnOff2 = false;
 		
 		newTerm();
 		setTerm();
@@ -39,7 +42,28 @@ public class TermPanel extends BasePanel {
 			String name = data.getName();
 			c1.add(name);
 		}
-		panelOnOff();
+		
+		
+		serchB.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				panelOnOff();
+				
+				list = dao.serchDB(className, serchC.getSelectedItem(), serchTf.getText());
+				b = new Button[list.size()];
+				for (int i = 0; i < list.size(); i++) {
+					MemberVo data = (MemberVo) list.get(i);
+					String name = data.getName();
+					b[i] = new Button(name);					
+					System.out.println(b[i].getLabel());
+					b[i].addActionListener(new ActButton(b[i].getLabel(), c1));
+					serchP.add(b[i]);
+					b[i].setBounds(10, (i + 1) * 40, 70, 30);
+				}
+			}
+		});
+		
+		
+		
 		MainFrame.f.add(termP);
 	}
 
@@ -80,8 +104,8 @@ public class TermPanel extends BasePanel {
 		label();
 		
 		homeB.addActionListener(new ActButton(termP));
-		serchB.addActionListener(new ActButton(closeB, conTa, serchTf, serchC, className));
-		closeB.addActionListener(new ActButton(contentsP, conTa));
+//		serchB.addActionListener(new ActButton(closeB, conTa, serchTf, serchC, className));
+//		closeB.addActionListener(new ActButton(contentsP, conTa));
 		c1.addItemListener(new ChoiceHandler(conTa, className, c1));
 	}
 
@@ -101,4 +125,8 @@ public class TermPanel extends BasePanel {
 		contentsP.add(conTa);
 		nameP.add(lb);
 	}
+	
+//	interface Callback{
+//		void panelOnOff();
+//	}
 }

@@ -37,19 +37,8 @@ public class ActButton implements ActionListener {
 	//검색결과버튼
 	public ActButton(String name, Choice c) {
 		this.name = name;
-	}
-	//검색패널 열기
-	public ActButton(Button b1, TextArea ta, TextField tf, Choice c, String cName) {
-		this.b1 = b1;
-		this.ta = ta;
-		this.tf = tf;
-		this.cName = cName;
 		this.c = c;
-	}
-	//검색패널 닫기
-	public ActButton(Panel p, TextArea ta) {
-		this.ta = ta;
-		this.p = p;
+		
 	}
 	//컴파일 기능
 	public ActButton(TextArea ta) {
@@ -130,24 +119,10 @@ public class ActButton implements ActionListener {
 		if (e.getActionCommand().equals("Clear")) {
 			ta.setText("");
 		}
-		////검색 관련
-		if (e.getActionCommand().equals("확인")) {
-			ta.setVisible(false);
-			b1.setVisible(true);
-			SerchPanel sp1 = new SerchPanel(ta, tf, c, cName);
-			sp = sp1;
-			
-		}
-		if (e.getActionCommand().equals("검색 닫기")) {
-			sp.closeP();
-			ta.setVisible(true);
-			p.add(ta);
-		}
+		//검색 관련
 		if (e.getActionCommand().equals(name)) {
-			sp.closeP();
-			ta.setVisible(true);
-			p.add(ta);
 			c.select(name);
 		}
 	}
+
 }

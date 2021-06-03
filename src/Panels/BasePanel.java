@@ -21,7 +21,7 @@ abstract class BasePanel {
 	protected TextArea conTa;
 	protected Label lb;
 	protected MemberDAO dao;
-	protected boolean OnOff;
+	protected boolean OnOff1, OnOff2;
 	
 	// 이름 패널
 	protected void namePanel() {
@@ -35,12 +35,15 @@ abstract class BasePanel {
 		contentsP.setLayout(null);
 		contentsP.setBounds(10, 90, 660, 520);
 		contentsP.setBackground(Color.yellow);
+		contentsP.setVisible(OnOff1);
 	}
 
 	// 검색 패널
 	protected void serchP() {
 		serchP.setLayout(null);
 		serchP.setBounds(10, 90, 660, 520);
+		serchP.setBackground(Color.yellow);
+		serchP.setVisible(OnOff2);
 	}
 
 	// 홈 버튼
@@ -118,7 +121,7 @@ abstract class BasePanel {
 	}
 	// 패널 교체
 	protected void panelOnOff() {
-		contentsP.setVisible(OnOff);
-		serchP.setVisible(!OnOff);
+		contentsP.setVisible(!OnOff1);
+		serchP.setVisible(!OnOff2);
 	}
 }

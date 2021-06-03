@@ -27,7 +27,8 @@ public class FunctionPanel extends BasePanel {
 		functionP.setLayout(null);
 		functionP.setBackground(Color.green);
 		functionP.setBounds(10, 10, 680, 700);
-		OnOff = true;
+		OnOff1 = true;
+		OnOff2 = false;
 		
 		newFunction();
 		setFunction();
@@ -40,7 +41,7 @@ public class FunctionPanel extends BasePanel {
 //			String name = data.getName();
 //			c1.add(name);
 //		}
-		panelOnOff();
+//		panelOnOff();
 		MainFrame.f.add(functionP);
 	}
 
@@ -84,8 +85,8 @@ public class FunctionPanel extends BasePanel {
 		
 		homeB.addActionListener(new ActButton(functionP));
 		compileB.addActionListener(new ActButton(compileB, homeB));
-		serchB.addActionListener(new ActButton(closeB, conTa, serchTf, serchC, className));
-		closeB.addActionListener(new ActButton(contentsP, conTa));
+//		serchB.addActionListener(new ActButton(closeB, conTa, serchTf, serchC, className));
+//		closeB.addActionListener(new ActButton(contentsP, conTa));
 		c1.addItemListener(new ChoiceHandler(conTa, className, c1));
 	}
 
