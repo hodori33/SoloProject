@@ -14,11 +14,12 @@ public class DbMaker {
 			fos = new FileOutputStream("test.txt");
 			ps = new PrintStream(fos);
 			System.setOut(ps);
+			System.setIn(null);
 		}catch(FileNotFoundException e) {
 			System.err.println("File not found");
 			
 		}
-		System.out.println("aa");
+		System.out.println("aaaaaaaaaaaaa");
 	}
 
 }

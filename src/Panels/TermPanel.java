@@ -21,7 +21,7 @@ import Main.MainFrame;
 public class TermPanel extends BasePanel {
 	private Panel termP;
 	private ArrayList<MemberVo> list;
-	private final String className = "Term";
+	private final String className = "term";
 	
 	public TermPanel() {
 		termP = new Panel();
@@ -101,7 +101,7 @@ public class TermPanel extends BasePanel {
 		label();
 		
 		homeB.addActionListener(new ActButton(termP));
-		c2.addItemListener(new ChoiceHandler(conTa, className, c2));
+		c2.addItemListener(new ChoiceHandler(conTa, c2, className));
 	}
 
 	// 패널에 추가

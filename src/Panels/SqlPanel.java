@@ -21,7 +21,7 @@ import Main.MainFrame;
 public class SqlPanel extends BasePanel {
 	private Panel sqlP;
 	private ArrayList<MemberVo> list;
-	private final String className = "Sql";
+	private final String className = "sql";
 	
 	public SqlPanel() {
 		// Sql 패널
@@ -104,7 +104,7 @@ public class SqlPanel extends BasePanel {
 		label();
 		
 		homeB.addActionListener(new ActButton(sqlP));
-		c2.addItemListener(new ChoiceHandler(conTa, className, c2));		
+		c2.addItemListener(new ChoiceHandler(conTa, c2, className));		
 	}
 
 	// 패널에 추가

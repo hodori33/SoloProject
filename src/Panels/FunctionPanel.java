@@ -8,18 +8,18 @@ import java.awt.Label;
 import java.awt.Panel;
 import java.awt.TextArea;
 import java.awt.TextField;
-//import java.util.ArrayList;
+import java.util.ArrayList;
 
 import Buttons.ActButton;
 import Buttons.ChoiceHandler;
 import DbMaker.MemberDAO;
-//import DbMaker.MemberVo;
+import DbMaker.MemberVo;
 import Main.MainFrame;
 
 public class FunctionPanel extends BasePanel {
 	private Panel functionP;
-//	private ArrayList<MemberVo> list;
-	private final String className = "Function";
+	private ArrayList<MemberVo> list;
+	private final String className = "function";
 	
 	public FunctionPanel() {
 		// Function 패널
@@ -34,14 +34,16 @@ public class FunctionPanel extends BasePanel {
 		setFunction();
 		addFunction();
 		
+		
+
 		// db 조회로 c1목록 채우기
-//		list = dao.selectDB(className);
-//		for (int i = 0; i < list.size(); i++) {
-//			MemberVo data = (MemberVo) list.get(i);
-//			String name = data.getName();
-//			c1.add(name);
-//		}
-//		panelOnOff();
+		list = dao.selectDB(className);
+		for (int i = 0; i < list.size(); i++) {
+			MemberVo data = (MemberVo) list.get(i);
+			String name = data.getName();
+			c1.add(name);
+		}
+
 		MainFrame.f.add(functionP);
 	}
 
@@ -87,9 +89,8 @@ public class FunctionPanel extends BasePanel {
 		
 		homeB.addActionListener(new ActButton(functionP));
 		compileB.addActionListener(new ActButton(compileB, homeB));
-//		serchB.addActionListener(new ActButton(closeB, conTa, serchTf, serchC, className));
-//		closeB.addActionListener(new ActButton(contentsP, conTa));
-		c1.addItemListener(new ChoiceHandler(conTa, className, c1));
+		c1.addItemListener(new ChoiceHandler(c1, c2, className));
+		c2.addItemListener(new ChoiceHandler(conTa, c1, c2, className));
 	}
 
 	// 패널에 추가

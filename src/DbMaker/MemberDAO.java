@@ -18,13 +18,15 @@ public class MemberDAO {
 	private String query;
 	private ResultSet rs;
 	private ArrayList<MemberVo> list;
+	
+	public MemberDAO() {
+		connDB();
+	}
 
 	// 검색 기능
 	public ArrayList<MemberVo> serchDB(String str, String Choice, String serch) {
 		list = new ArrayList<MemberVo>();
 		try {
-	//		connDB();
-
 			query = "select " + str + "_name from java_" + str + " where " + str + "_name like '%" + serch.toUpperCase()
 					+ "%'";
 			rs = stmt.executeQuery(query);
@@ -43,9 +45,7 @@ public class MemberDAO {
 	public ArrayList<MemberVo> selectDB(String str) {
 		list = new ArrayList<MemberVo>();
 		try {
-		//	connDB();
-
-			query = "select " + str + "_name from java_" + str;
+			query = "select " + str.toUpperCase() + "_name from java_" + str.toUpperCase();
 			rs = stmt.executeQuery(query);
 			while (rs.next()) {
 				String name = rs.getString(str + "_name");
@@ -63,13 +63,12 @@ public class MemberDAO {
 		String str = "";
 		try {
 			connDB();
-			query = "select " + cName + "_contents from java_" + cName + " where " + cName + "_name = '"
-					+ name.toUpperCase() + "'";
+			query = "select " + cName + "_contents from java_" + cName + " where " + cName.toLowerCase() + "_name = '"
+					+ name + "'";
 			rs = stmt.executeQuery(query);
-
+			
 			if (rs.next()) {
 				str = rs.getString(1);
-				System.out.println(rs.getString(1));
 			}
 
 		} catch (SQLException e) {

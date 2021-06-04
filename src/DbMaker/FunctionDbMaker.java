@@ -45,7 +45,7 @@ public class FunctionDbMaker {
 						data2 = st.nextToken();
 						name = st.nextToken();
 					}
-					temp = "\n" + data1 + "\n" + data2 + name + "\n" + reader.readLine(); // 넷째줄 내용1 + 이름 + 내용2
+					temp = "\n" + data1 + "\n" + data2 +"\t"+ name + "\n" + reader.readLine(); // 넷째줄 내용1 + 이름 + 내용2
 					// dao.로 table(테이블명) cnt(넘버링), name(이름), data1(내용) 전달
 					dao.insert(table, cnt2++, name, temp);
 					temp = "";
