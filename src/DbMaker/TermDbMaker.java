@@ -24,7 +24,7 @@ public class TermDbMaker {
 		try {
 			r = new FileReader("C:\\Users\\hodori\\Desktop\\db만들기\\Term.txt", StandardCharsets.UTF_8);
 			reader = new BufferedReader(r);
-			dao.createTermTable(); // TermTable생성
+			dao.createTable("term"); // TermTable생성
 
 			while (true) {
 				name = reader.readLine(); // term_name용
@@ -40,7 +40,7 @@ public class TermDbMaker {
 					String arr = data.toString() + "\n"; // temp 문장 이어 붙이기
 					temp += arr;
 				}
-				dao.addTerm(cnt, name, temp); // temp로 name테이블의 contents항목에 insert.
+				dao.insert("term",cnt, name, temp); // temp로 name테이블의 contents항목에 insert.
 				temp = "";
 				cnt++; // 넘버링
 			}
@@ -52,8 +52,8 @@ public class TermDbMaker {
 		}
 	}
 
-	public void removeTermTable() {
-		dao.removeTermTable();
+	public void removeTable() {
+		dao.removeTable("term");
 	}
 
 }

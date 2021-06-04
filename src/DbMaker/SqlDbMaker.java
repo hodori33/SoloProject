@@ -25,10 +25,10 @@ public class SqlDbMaker {
 			r = new FileReader("C:\\Users\\hodori\\Desktop\\db만들기\\Sql.txt", StandardCharsets.UTF_8);
 			reader = new BufferedReader(r);
 
-			dao.createSqlTable(); // TermTable생성
+			dao.createTable("sql"); // sqlTable생성
 
 			while (true) {
-				name = reader.readLine(); // term_name용
+				name = reader.readLine(); // sql_name용
 				if (name == null) {
 					break;
 				}
@@ -41,7 +41,7 @@ public class SqlDbMaker {
 					String arr = data.toString() + "\n"; // temp 문장 이어 붙이기
 					temp += arr;
 				}
-				dao.addSql(cnt, name, temp); // temp로 name테이블의 contents항목에 insert.
+				dao.insert("sql",cnt, name, temp); // temp로 name테이블의 contents항목에 insert.
 				temp = "";
 				cnt++; // 넘버링
 			}
@@ -53,8 +53,8 @@ public class SqlDbMaker {
 		}
 	}
 
-	public void removeSqlTable() {
-		dao.removeSqlTable();
+	public void removeTable() {
+		dao.removeTable("sql");
 	}
 
 }

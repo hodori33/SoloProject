@@ -8,23 +8,25 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class MemberDAO {
-	String driver = "oracle.jdbc.driver.OracleDriver";
-	String url = "jdbc:oracle:thin:@localhost:1521/xe";
-	String user = "green";
-	String password = "green1234";
+	private String driver = "oracle.jdbc.driver.OracleDriver";
+	private String url = "jdbc:oracle:thin:@localhost:1521/xe";
+	private String user = "green";
+	private String password = "green1234";
 
 	private Connection con;
 	private Statement stmt;
 	private String query;
 	private ResultSet rs;
 	private ArrayList<MemberVo> list;
-	
-	public ArrayList<MemberVo> serchDB(String str, String Choice, String serch){
+
+	// 검색 기능
+	public ArrayList<MemberVo> serchDB(String str, String Choice, String serch) {
 		list = new ArrayList<MemberVo>();
 		try {
-			connDB();
+	//		connDB();
 
-			query = "select " + str + "_name from java_" + str+" where "+str+"_name like '%"+serch.toUpperCase()+"%'";
+			query = "select " + str + "_name from java_" + str + " where " + str + "_name like '%" + serch.toUpperCase()
+					+ "%'";
 			rs = stmt.executeQuery(query);
 			while (rs.next()) {
 				String name = rs.getString(str + "_name");
@@ -36,11 +38,12 @@ public class MemberDAO {
 		}
 		return list;
 	}
+
 	// 목록 조회
 	public ArrayList<MemberVo> selectDB(String str) {
 		list = new ArrayList<MemberVo>();
 		try {
-			connDB();
+		//	connDB();
 
 			query = "select " + str + "_name from java_" + str;
 			rs = stmt.executeQuery(query);
@@ -55,6 +58,7 @@ public class MemberDAO {
 		return list;
 	}
 
+	// 초이스에서 선택된 항목으로 DB조회
 	public String contents(String cName, String name) {
 		String str = "";
 		try {
@@ -62,12 +66,11 @@ public class MemberDAO {
 			query = "select " + cName + "_contents from java_" + cName + " where " + cName + "_name = '"
 					+ name.toUpperCase() + "'";
 			rs = stmt.executeQuery(query);
-			
-			if(rs.next()) {
+
+			if (rs.next()) {
 				str = rs.getString(1);
 				System.out.println(rs.getString(1));
 			}
-
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -75,11 +78,12 @@ public class MemberDAO {
 		return str;
 	}
 
-	// Term DB만들기
-	// Term table 생성
-	public void createTermTable() {
+	// 테이블 생성
+	public void createTable(String table_name) {
 		try {
-			query = "create table java_term (term_id int, term_name varchar2(40), term_contents varchar2(4000))";
+			query = "create table java_" + table_name + "(" + table_name + "_id int, " + table_name
+					+ "_name varchar2(100), " + table_name + "_contents varchar2(4000))";
+
 			rs = stmt.executeQuery(query);
 
 		} catch (SQLException e) {
@@ -87,66 +91,26 @@ public class MemberDAO {
 		}
 	}
 
-	// Term table삭제
-	public void removeTermTable() {
+	// table_name에 내용 넣기
+	public void insert(String table_name, int cnt, String str, String str2) {
 		try {
-			query = "drop table java_term";
+			String query = "insert into java_" + table_name + " values('" + cnt + "', '" + str + "', '" + str2 + "')";
 			rs = stmt.executeQuery(query);
-			System.out.println("삭제 완료!");
-		} catch (SQLException e) {
-			System.out.println("없는 테이블");
-		}
-	}
-
-	// Term table 내용 넣기
-	public void addTerm(int cnt, String str, String str2) {
-		try {
-			String query = "insert into java_term values('" + cnt + "', '" + str + "', '" + str2 + "')";
-			rs = stmt.executeQuery(query);
-			System.out.println("생성 완료!");
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
 	}
 
-	// SQL DB만들기
-	// SQL table 생성
-	public void createSqlTable() {
+	// table삭제
+	public void removeTable(String table_name) {
 		try {
-			query = "create table java_Sql (term_id int, sql_name varchar2(50), sql_contents varchar2(4000))";
-			rs = stmt.executeQuery(query);
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-	}
-
-	// SQL table삭제
-	public void removeSqlTable() {
-		try {
-			query = "drop table java_Sql";
+			query = "drop table java_" + table_name;
 			rs = stmt.executeQuery(query);
 			System.out.println("삭제 완료!");
-
 		} catch (SQLException e) {
 			System.out.println("없는 테이블");
 		}
-	}
-
-	// SQL table 내용 넣기
-	public void addSql(int cnt, String str, String str2) {
-		try {
-			String query = "insert into java_Sql values('" + cnt + "', '" + str + "', '" + str2 + "')";
-			rs = stmt.executeQuery(query);
-			System.out.println("생성 완료!");
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
 	}
 
 	public void connDB() {

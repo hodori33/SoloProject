@@ -13,8 +13,4 @@ public class MemberVo {
 	public String getName() {
 		return name;
 	}
-//
-//	public String getPassword() {
-//		return password;
-//	}
 }

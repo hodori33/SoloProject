@@ -59,6 +59,7 @@ public class FunctionPanel extends BasePanel {
 		font1 = new Font("맑은 고딕", Font.CENTER_BASELINE, 15);
 		font2 = new Font("고딕", Font.BOLD, 18);
 		c1 = new Choice();
+		c2 = new Choice();
 		serchC = new Choice();
 		serchTf = new TextField("검색어");
 		conTa = new TextArea("", 0, 0, TextArea.SCROLLBARS_VERTICAL_ONLY);
@@ -78,6 +79,7 @@ public class FunctionPanel extends BasePanel {
 		serchB();
 		closeB();
 		choice1();
+		choice2();
 		serchC();
 		serchTf();
 		contentsTa();
@@ -102,6 +104,7 @@ public class FunctionPanel extends BasePanel {
 		functionP.add(serchB);
 		functionP.add(closeB);
 		functionP.add(c1);
+		functionP.add(c2);
 		functionP.add(serchC);
 		functionP.add(serchTf);
 		contentsP.add(conTa);

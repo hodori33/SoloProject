@@ -8,8 +8,6 @@ import java.awt.event.ItemListener;
 import DbMaker.MemberDAO;
 
 public class ChoiceHandler implements ItemListener {
-	private String[] aa = { "11", "22", "33", "44", "55" };
-	private String[] bb = { "66", "77", "88", "99", "10" };
 	private Choice c1, c2;
 	private String cName, name;
 	private TextArea ta;

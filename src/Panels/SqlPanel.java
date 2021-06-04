@@ -41,7 +41,7 @@ public class SqlPanel extends BasePanel {
 		for (int i = 0; i < list.size(); i++) {
 			MemberVo data = (MemberVo) list.get(i);
 			String name = data.getName();
-			c1.add(name);
+			c2.add(name);
 		}
 		
 		serchB.addActionListener(new ActionListener() {
@@ -55,7 +55,7 @@ public class SqlPanel extends BasePanel {
 					String name = data.getName();
 					b[i] = new Button(name);					
 					System.out.println(b[i].getLabel());
-					b[i].addActionListener(new ActButton(b[i].getLabel(), c1));
+					b[i].addActionListener(new ActButton(className, b[i].getLabel(), c2, contentsP, serchP, conTa));
 					serchP.add(b[i]);
 					b[i].setBounds(10, (i + 1) * 40, 70, 30);
 				}
@@ -78,7 +78,7 @@ public class SqlPanel extends BasePanel {
 		closeB = new Button("검색 닫기");
 		font1 = new Font("맑은 고딕", Font.CENTER_BASELINE, 15);
 		font2 = new Font("고딕", Font.BOLD, 18);
-		c1 = new Choice();
+		c2 = new Choice();
 		serchC = new Choice();
 		serchTf = new TextField("검색어");
 		conTa = new TextArea("", 0, 0, TextArea.SCROLLBARS_VERTICAL_ONLY);
@@ -97,16 +97,14 @@ public class SqlPanel extends BasePanel {
 //		compileButton();
 		serchB();
 		closeB();
-		choice1();
+		choice2();
 		serchC();
 		serchTf();
 		contentsTa();
 		label();
 		
 		homeB.addActionListener(new ActButton(sqlP));
-//		serchB.addActionListener(new ActButton(closeB, conTa, serchTf, serchC, className));
-//		closeB.addActionListener(new ActButton(contentsP, conTa));
-		c1.addItemListener(new ChoiceHandler(conTa, className, c1));		
+		c2.addItemListener(new ChoiceHandler(conTa, className, c2));		
 	}
 
 	// 패널에 추가
@@ -120,7 +118,7 @@ public class SqlPanel extends BasePanel {
 //		sqlP.add(compileB);
 		sqlP.add(serchB);
 		sqlP.add(closeB);
-		sqlP.add(c1);
+		sqlP.add(c2);
 		sqlP.add(serchC);
 		sqlP.add(serchTf);
 		contentsP.add(conTa);
