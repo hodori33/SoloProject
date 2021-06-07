@@ -72,8 +72,8 @@ public class SqlPanel extends BasePanel {
 		serchP = new Panel();
 		homeB = new Button("Home");
 //		optionB = new Button("Option");
-//		logoutB = new Button("Logout");
-//		compileB = new Button("Compile");
+		logoutB = new Button("LogOut");
+		compileB = new Button("Compile");
 		serchB = new Button("확인");
 		closeB = new Button("검색 닫기");
 		font1 = new Font("맑은 고딕", Font.CENTER_BASELINE, 15);
@@ -82,7 +82,7 @@ public class SqlPanel extends BasePanel {
 		serchC = new Choice();
 		serchTf = new TextField("검색어");
 		conTa = new TextArea("", 0, 0, TextArea.SCROLLBARS_VERTICAL_ONLY);
-		lb = new Label("ccccccccccccc");
+		lb = new Label(className.toUpperCase());
 		dao = new MemberDAO();
 	}
 
@@ -93,8 +93,8 @@ public class SqlPanel extends BasePanel {
 		serchP();
 		homeButton();
 //		optionButton();
-// 		logoutButton();
-//		compileButton();
+ 		logoutButton();
+		compileButton();
 		serchB();
 		closeB();
 		choice2();
@@ -104,24 +104,26 @@ public class SqlPanel extends BasePanel {
 		label();
 		
 		homeB.addActionListener(new ActButton(sqlP));
+		logoutB.addActionListener(new ActButton());
 		c2.addItemListener(new ChoiceHandler(conTa, c2, className));		
 	}
 
 	// 패널에 추가
 	private void addSql() {
+		nameP.add(lb);
 		sqlP.add(nameP);
 		sqlP.add(contentsP);
 		sqlP.add(serchP);
 		sqlP.add(homeB);
 //		sqlP.add(optionB);
-//		sqlP.add(logoutB);
-//		sqlP.add(compileB);
+		sqlP.add(logoutB);
+		sqlP.add(compileB);
 		sqlP.add(serchB);
 		sqlP.add(closeB);
 		sqlP.add(c2);
 		sqlP.add(serchC);
 		sqlP.add(serchTf);
 		contentsP.add(conTa);
-		nameP.add(lb);
+		
 	}
 }

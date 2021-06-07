@@ -71,7 +71,8 @@ public class TermPanel extends BasePanel {
 		serchP = new Panel();
 		homeB = new Button("Home");
 //		optionB = new Button("Option");
-//		logoutB = new Button("Logout");
+		logoutB = new Button("LogOut");
+		compileB = new Button("Compile");
 		serchB = new Button("확인");
 		closeB = new Button("검색 닫기");
 		font1 = new Font("맑은 고딕", Font.CENTER_BASELINE, 15);
@@ -80,7 +81,7 @@ public class TermPanel extends BasePanel {
 		serchC = new Choice();
 		serchTf = new TextField();
 		conTa = new TextArea("", 0, 0, TextArea.SCROLLBARS_VERTICAL_ONLY);
-		lb = new Label("bbbbbbbbbbbbb");
+		lb = new Label(className.toUpperCase());
 		dao = new MemberDAO();	
 	}
 
@@ -91,7 +92,8 @@ public class TermPanel extends BasePanel {
 		serchP();
 		homeButton();
 //		optionButton();
-// 		logoutButton();
+ 		logoutButton();
+ 		compileButton();
 		serchB();
 		closeB();
 		choice2();
@@ -101,6 +103,7 @@ public class TermPanel extends BasePanel {
 		label();
 		
 		homeB.addActionListener(new ActButton(termP));
+		logoutB.addActionListener(new ActButton());
 		c2.addItemListener(new ChoiceHandler(conTa, c2, className));
 	}
 
@@ -111,7 +114,8 @@ public class TermPanel extends BasePanel {
 		termP.add(serchP);
 		termP.add(homeB);
 //		termP.add(optionB);
-//		termP.add(logoutB);
+		termP.add(logoutB);
+		termP.add(compileB);
 		termP.add(serchB);
 		termP.add(closeB);
 		termP.add(c2);

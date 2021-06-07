@@ -1,15 +1,19 @@
 package Buttons;
 
-import java.awt.Button;
 import java.awt.Choice;
+import java.awt.Desktop;
 import java.awt.Panel;
 import java.awt.TextArea;
-import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.util.ArrayList;
+
+import java.net.*;
 
 import DbMaker.*;
-import EtcPanels.CompilePanel;
+import Login.Login;
+import Main.MainFrame;
 import Panels.FunctionPanel;
 import Panels.HomePanel;
 import Panels.SqlPanel;
@@ -17,42 +21,47 @@ import Panels.TermPanel;
 
 public class ActButton implements ActionListener {
 	private Panel p1, p2;
-	private Button b1, b2;
-	private Choice c;
-	private TextField tf;
+	private Choice c1, c2;
 	private TextArea ta;
-	private CompilePanel cp;
 	private String cName, name;
-	
+	private ArrayList<MemberVo> list;
+
 	public ActButton() {
 	}
-	//홈에서의 패널 선택
+
+	// 홈에서의 패널 선택
 	public ActButton(Panel p1) {
 		this.p1 = p1;
 	}
-	//검색결과버튼
-	public ActButton(String cName, String name, Choice c, Panel p1, Panel p2, TextArea ta) {
+
+	// 검색결과버튼
+	public ActButton(String cName, String name, Choice c1, Panel p1, Panel p2, TextArea ta) {
 		this.cName = cName;
 		this.name = name;
-		this.c = c;
+		this.c1 = c1;
 		this.p1 = p1;
 		this.p2 = p2;
 		this.ta = ta;
-		
 	}
-	//컴파일 기능
+
+	// 검색결과버튼
+	public ActButton(String cName, String name, Choice c1, Choice c2, Panel p1, Panel p2, TextArea ta) {
+		this.cName = cName;
+		this.name = name;
+		this.c1 = c1;
+		this.c2 = c2;
+		this.p1 = p1;
+		this.p2 = p2;
+		this.ta = ta;
+	}
+
+	// 컴파일 기능
 	public ActButton(TextArea ta) {
 		this.ta = ta;
 	}
-	//컴파일on/off
-	public ActButton(Button b1, Button b2) {
-		this.b1 = b1;
-		this.b2 = b2;
-	}
-
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		////홈패널
+		//// 홈패널
 		if (e.getActionCommand().equals("Java Funtion")) {
 			p1.setVisible(false);
 			new FunctionPanel();
@@ -77,7 +86,7 @@ public class ActButton implements ActionListener {
 		}
 		if (e.getActionCommand().equals("Term DB")) {
 			TermDbMaker tdm = new TermDbMaker();
-			tdm.createTermTable();		
+			tdm.createTermTable();
 		}
 		if (e.getActionCommand().equals("Term DB Remove")) {
 			TermDbMaker tdm = new TermDbMaker();
@@ -91,7 +100,7 @@ public class ActButton implements ActionListener {
 			SqlDbMaker sdm = new SqlDbMaker();
 			sdm.removeTable();
 		}
-		////Function,Term,SQL 패널
+		//// Function,Term,SQL 패널
 		if (e.getActionCommand().equals("Home")) {
 			p1.setVisible(false);
 			new HomePanel();
@@ -100,37 +109,51 @@ public class ActButton implements ActionListener {
 			System.out.println("2");
 		}
 		if (e.getActionCommand().equals("LogOut")) {
-			System.out.println("3");
+			System.out.println("2");
+			MainFrame.f.dispose();
+			new Login();
 		}
-		////컴파일 관련
-		if (e.getActionCommand().equals("Compile")) {
-			CompilePanel c1 = new CompilePanel();
-			b1.setLabel("Close");
-			b2.setVisible(false);
-			cp = c1;
+		//// 컴파일 관련
+		if (e.getActionCommand().equals("Compile")) {	
+			try {
+				Desktop.getDesktop().browse(new URI("https://www.compilejava.net/"));
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (URISyntaxException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
-		if (e.getActionCommand().equals("Close")) {
-			cp.closeP();
-			b1.setLabel("Compile");
-			b2.setVisible(true);
-		}
-		if (e.getActionCommand().equals("Run")) {
-			System.out.println(ta.getText());
-		}
-
-		if (e.getActionCommand().equals("Clear")) {
-			ta.setText("public class Test{\n\tpublic static void test(String[] args) {\n\t //내용을 입력하세요.\n\t}\n}");
-		}
-		//검색 관련
+		// 검색 관련
 		if (e.getActionCommand().equals(name)) {
-			p1.setVisible(true);
-			p2.setVisible(false);
-			c.select(name);
-			name = c.getSelectedItem();
-			MemberDAO dao = new MemberDAO();
-			String str = dao.contents(cName, name);
-			ta.setText(str);
+
+			if (c2 == null) {
+				p1.setVisible(true);
+				p2.setVisible(false);
+				c1.select(name);
+				MemberDAO dao = new MemberDAO();
+				String str = dao.contents(cName, name);
+				ta.setText(str);
+
+			} else {
+				p1.setVisible(true);
+				p2.setVisible(false);
+				c1.select(name);
+				MemberDAO dao = new MemberDAO();
+				list = dao.selectDB(name);
+				for (int i = 0; i < list.size(); i++) {
+					MemberVo data = (MemberVo) list.get(i);
+					String temp = data.getName();
+					c2.add(temp);
+				}
+				c2.select(0);
+				name = c2.getItem(0);
+				System.out.println(name);
+				String str = dao.contents(c1.getSelectedItem(), name);
+				ta.setText(str);
+			}
+
 		}
 	}
-
 }

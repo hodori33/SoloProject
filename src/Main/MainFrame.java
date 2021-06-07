@@ -11,14 +11,14 @@ import Panels.HomePanel;
 public class MainFrame extends WindowAdapter {
 	public static Frame f;
 
-	MainFrame() {
+	public MainFrame() {
 		f = new Frame();
 		f.setLayout(null);
-		f.setBounds(0, 0, 1200, 700);
+		f.setBounds(0, 0, 700, 700);
 
 		Toolkit tt = Toolkit.getDefaultToolkit();
 		Dimension screenSize = tt.getScreenSize();
-		f.setLocation(screenSize.width / 2 - (1200 / 2), screenSize.height / 2 - (700 / 2));
+		f.setLocation(screenSize.width / 2 - (700 / 2), screenSize.height / 2 - (700 / 2));
 		f.addWindowListener(this);
 		f.setVisible(true);
 		new HomePanel();

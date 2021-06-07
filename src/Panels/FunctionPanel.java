@@ -8,6 +8,8 @@ import java.awt.Label;
 import java.awt.Panel;
 import java.awt.TextArea;
 import java.awt.TextField;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import Buttons.ActButton;
@@ -33,8 +35,6 @@ public class FunctionPanel extends BasePanel {
 		newFunction();
 		setFunction();
 		addFunction();
-		
-		
 
 		// db 조회로 c1목록 채우기
 		list = dao.selectDB(className);
@@ -43,6 +43,24 @@ public class FunctionPanel extends BasePanel {
 			String name = data.getName();
 			c1.add(name);
 		}
+		
+		serchB.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				panelOnOff();
+
+				list = dao.serchDB(className, serchC.getSelectedItem(), serchTf.getText());
+				b = new Button[list.size()];
+				for (int i = 0; i < list.size(); i++) {
+					MemberVo data = (MemberVo) list.get(i);
+					String name = data.getName();
+					b[i] = new Button(name);					
+					System.out.println(b[i].getLabel());
+					b[i].addActionListener(new ActButton(className, b[i].getLabel(), c1, c2, contentsP, serchP, conTa));
+					serchP.add(b[i]);
+					b[i].setBounds(10, (i + 1) * 40, 70, 30);
+				}
+			}
+		});
 
 		MainFrame.f.add(functionP);
 	}
@@ -54,7 +72,7 @@ public class FunctionPanel extends BasePanel {
 		serchP = new Panel();
 		homeB = new Button("Home");
 //		optionB = new Button("Option");
-//		logoutB = new Button("Logout");
+		logoutB = new Button("LogOut");
 		compileB = new Button("Compile");
 		serchB = new Button("확인");
 		closeB = new Button("검색 닫기");
@@ -65,7 +83,7 @@ public class FunctionPanel extends BasePanel {
 		serchC = new Choice();
 		serchTf = new TextField("검색어");
 		conTa = new TextArea("", 0, 0, TextArea.SCROLLBARS_VERTICAL_ONLY);
-		lb = new Label("ccccccccccccc");
+		lb = new Label(className.toUpperCase());
 		dao = new MemberDAO();
 	}
 	
@@ -76,7 +94,7 @@ public class FunctionPanel extends BasePanel {
 		serchP();
 		homeButton();
 //		optionButton();
-// 		logoutButton();
+ 		logoutButton();
 		compileButton();
 		serchB();
 		closeB();
@@ -88,7 +106,8 @@ public class FunctionPanel extends BasePanel {
 		label();
 		
 		homeB.addActionListener(new ActButton(functionP));
-		compileB.addActionListener(new ActButton(compileB, homeB));
+		compileB.addActionListener(new ActButton());
+		logoutB.addActionListener(new ActButton());
 		c1.addItemListener(new ChoiceHandler(c1, c2, className));
 		c2.addItemListener(new ChoiceHandler(conTa, c1, c2, className));
 	}
@@ -100,7 +119,7 @@ public class FunctionPanel extends BasePanel {
 		functionP.add(serchP);
 		functionP.add(homeB);
 //		functionP.add(optionB);
-//		functionP.add(logoutB);
+		functionP.add(logoutB);
 		functionP.add(compileB);
 		functionP.add(serchB);
 		functionP.add(closeB);

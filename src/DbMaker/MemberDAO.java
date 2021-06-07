@@ -18,7 +18,7 @@ public class MemberDAO {
 	private String query;
 	private ResultSet rs;
 	private ArrayList<MemberVo> list;
-	
+
 	public MemberDAO() {
 		connDB();
 	}
@@ -66,7 +66,7 @@ public class MemberDAO {
 			query = "select " + cName + "_contents from java_" + cName + " where " + cName.toLowerCase() + "_name = '"
 					+ name + "'";
 			rs = stmt.executeQuery(query);
-			
+
 			if (rs.next()) {
 				str = rs.getString(1);
 			}
@@ -110,6 +110,62 @@ public class MemberDAO {
 		} catch (SQLException e) {
 			System.out.println("없는 테이블");
 		}
+	}
+
+	// 아이디 중복 체크
+	public boolean idCheck(String id) {
+		query = "SELECT id FROM person";
+		try {
+			rs = stmt.executeQuery(query);
+
+			while (rs.next()) {
+				if (id.equals(rs.getString("id"))) {
+					return false;
+				}
+			}
+			return true;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+
+	}
+
+	// 아이디 생성
+	public void idCreate(String id, String pw) {
+		query = "insert into person values(" + "'" + id + "','" + pw + "')";
+		try {
+			rs = stmt.executeQuery(query);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	// 로그인
+	public ArrayList<MemberVo> list(String name) {
+		ArrayList<MemberVo> list = new ArrayList<MemberVo>();
+
+		try {
+			query = "SELECT * FROM person";
+			if (name != null) {
+				query += " where id='" + name + "'";
+			}
+			rs = stmt.executeQuery(query);
+
+			while (rs.next()) {
+				String id = rs.getString("id");
+				String password = rs.getString("pw");
+				MemberVo data = new MemberVo(id, password);
+				list.add(data);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
 	}
 
 	public void connDB() {
