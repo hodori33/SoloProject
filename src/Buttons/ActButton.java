@@ -1,28 +1,42 @@
 package Buttons;
 
+import java.awt.AWTException;
+import java.awt.Button;
 import java.awt.Choice;
 import java.awt.Desktop;
+import java.awt.Dimension;
+import java.awt.Label;
 import java.awt.Panel;
+import java.awt.Robot;
 import java.awt.TextArea;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 
-import java.net.*;
-
-import DbMaker.*;
+import DbMaker.FunctionDbMaker;
+import DbMaker.MemberDAO;
+import DbMaker.MemberVo;
+import DbMaker.SqlDbMaker;
+import DbMaker.TermDbMaker;
 import Login.Login;
 import Main.MainFrame;
 import Panels.FunctionPanel;
 import Panels.HomePanel;
 import Panels.SqlPanel;
 import Panels.TermPanel;
+import Panels.UserPanel;
 
 public class ActButton implements ActionListener {
 	private Panel p1, p2;
+	private UserPanel up;
 	private Choice c1, c2;
 	private TextArea ta;
+	private Button b1;
+	private Label lb;
 	private String cName, name;
 	private ArrayList<MemberVo> list;
 
@@ -34,7 +48,7 @@ public class ActButton implements ActionListener {
 		this.p1 = p1;
 	}
 
-	// 검색결과버튼
+	// 검색결과버튼 초이스 하나일때
 	public ActButton(String cName, String name, Choice c1, Panel p1, Panel p2, TextArea ta) {
 		this.cName = cName;
 		this.name = name;
@@ -44,7 +58,7 @@ public class ActButton implements ActionListener {
 		this.ta = ta;
 	}
 
-	// 검색결과버튼
+	// 검색결과버튼 초이스 두개일때
 	public ActButton(String cName, String name, Choice c1, Choice c2, Panel p1, Panel p2, TextArea ta) {
 		this.cName = cName;
 		this.name = name;
@@ -54,11 +68,16 @@ public class ActButton implements ActionListener {
 		this.p2 = p2;
 		this.ta = ta;
 	}
-
-	// 컴파일 기능
-	public ActButton(TextArea ta) {
-		this.ta = ta;
+	// 사용자 패널on/off
+	public ActButton(Button b1) {
+		this.b1 = b1;
 	}
+	// 사용자 패널에 검색 목록 버튼들.
+	public ActButton(Button b1, Label lb) {
+		this.b1 = b1;
+		this.lb = lb;
+	}
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		//// 홈패널
@@ -103,13 +122,47 @@ public class ActButton implements ActionListener {
 		//// Function,Term,SQL 패널
 		if (e.getActionCommand().equals("Home")) {
 			p1.setVisible(false);
+			MainFrame.f.setBounds(0, 0, 700, 700);
+			Toolkit tt = Toolkit.getDefaultToolkit();
+			Dimension screenSize = tt.getScreenSize();
+			MainFrame.f.setLocation(screenSize.width / 2 - (700 / 2), screenSize.height / 2 - (700 / 2));
 			new HomePanel();
 		}
-		if (e.getActionCommand().equals("Option")) {
-			System.out.println("2");
+		if (e.getActionCommand().equals("검색기록")) {
+			try {
+				Robot robot = new Robot();
+				robot.mouseMove(590, 850);
+			} catch (AWTException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			b1.setLabel("닫기");
+			MainFrame.f.setBounds(0, 0, 1000, 700);
+			Toolkit tt = Toolkit.getDefaultToolkit();
+			Dimension screenSize = tt.getScreenSize();
+			MainFrame.f.setLocation(screenSize.width / 2 - (1000 / 2), screenSize.height / 2 - (700 / 2));
+			UserPanel up = new UserPanel();
+			this.up = up;
 		}
+		
+		if (e.getActionCommand().equals("닫기")) {
+			try {
+				Robot robot = new Robot();
+				robot.mouseMove(750, 850);
+			} catch (AWTException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			b1.setLabel("검색기록");
+			MainFrame.f.setBounds(0, 0, 700, 700);
+			Toolkit tt = Toolkit.getDefaultToolkit();
+			Dimension screenSize = tt.getScreenSize();
+			MainFrame.f.setLocation(screenSize.width / 2 - (700 / 2), screenSize.height / 2 - (700 / 2));
+			up.closePanel();
+		}
+		
+		
 		if (e.getActionCommand().equals("LogOut")) {
-			System.out.println("2");
 			MainFrame.f.dispose();
 			new Login();
 		}
@@ -155,5 +208,18 @@ public class ActButton implements ActionListener {
 			}
 
 		}
+		
+		if (e.getActionCommand().equals("x")) {
+			MemberDAO dao = new MemberDAO();
+			dao.serch_List_Remove(lb.getText());
+			b1.setVisible(false);
+			lb.setVisible(false);	
+		}
+		if (e.getActionCommand().equals("모두 지우기")) {
+			MemberDAO dao = new MemberDAO();
+			dao.serch_List_AllRemove();
+			p1.removeAll();
+		}
+		
 	}
 }

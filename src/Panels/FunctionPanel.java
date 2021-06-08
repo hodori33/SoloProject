@@ -44,6 +44,7 @@ public class FunctionPanel extends BasePanel {
 			c1.add(name);
 		}
 		
+		//검색 버튼을 눌렀을때 패널 전환하고 검색 내용 출력
 		serchB.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				panelOnOff();
@@ -71,13 +72,13 @@ public class FunctionPanel extends BasePanel {
 		contentsP = new Panel();
 		serchP = new Panel();
 		homeB = new Button("Home");
-//		optionB = new Button("Option");
+		userB = new Button("검색기록");
 		logoutB = new Button("LogOut");
 		compileB = new Button("Compile");
 		serchB = new Button("확인");
-		closeB = new Button("검색 닫기");
-		font1 = new Font("맑은 고딕", Font.CENTER_BASELINE, 15);
-		font2 = new Font("고딕", Font.BOLD, 18);
+		closeB = new Button("검색 닫기");		//안쓰는 버튼
+		font1 = new Font("맑은 고딕", Font.BOLD, 15);
+		font2 = new Font("고딕", Font.BOLD, 20);
 		c1 = new Choice();
 		c2 = new Choice();
 		serchC = new Choice();
@@ -93,7 +94,7 @@ public class FunctionPanel extends BasePanel {
 		contentsP();
 		serchP();
 		homeButton();
-//		optionButton();
+		userButton();
  		logoutButton();
 		compileButton();
 		serchB();
@@ -106,8 +107,10 @@ public class FunctionPanel extends BasePanel {
 		label();
 		
 		homeB.addActionListener(new ActButton(functionP));
-		compileB.addActionListener(new ActButton());
+		userB.addActionListener(new ActButton(userB));
 		logoutB.addActionListener(new ActButton());
+		compileB.addActionListener(new ActButton());
+		
 		c1.addItemListener(new ChoiceHandler(c1, c2, className));
 		c2.addItemListener(new ChoiceHandler(conTa, c1, c2, className));
 	}
@@ -118,7 +121,7 @@ public class FunctionPanel extends BasePanel {
 		functionP.add(contentsP);
 		functionP.add(serchP);
 		functionP.add(homeB);
-//		functionP.add(optionB);
+		functionP.add(userB);
 		functionP.add(logoutB);
 		functionP.add(compileB);
 		functionP.add(serchB);

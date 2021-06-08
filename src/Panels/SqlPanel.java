@@ -71,13 +71,13 @@ public class SqlPanel extends BasePanel {
 		contentsP = new Panel();
 		serchP = new Panel();
 		homeB = new Button("Home");
-//		optionB = new Button("Option");
+		userB = new Button("userB");
 		logoutB = new Button("LogOut");
 		compileB = new Button("Compile");
 		serchB = new Button("확인");
 		closeB = new Button("검색 닫기");
-		font1 = new Font("맑은 고딕", Font.CENTER_BASELINE, 15);
-		font2 = new Font("고딕", Font.BOLD, 18);
+		font1 = new Font("맑은 고딕", Font.BOLD, 15);
+		font2 = new Font("고딕", Font.BOLD, 20);
 		c2 = new Choice();
 		serchC = new Choice();
 		serchTf = new TextField("검색어");
@@ -92,7 +92,7 @@ public class SqlPanel extends BasePanel {
 		contentsP();
 		serchP();
 		homeButton();
-//		optionButton();
+		userButton();
  		logoutButton();
 		compileButton();
 		serchB();
@@ -104,6 +104,7 @@ public class SqlPanel extends BasePanel {
 		label();
 		
 		homeB.addActionListener(new ActButton(sqlP));
+		userB.addActionListener(new ActButton(userB));
 		logoutB.addActionListener(new ActButton());
 		c2.addItemListener(new ChoiceHandler(conTa, c2, className));		
 	}
@@ -115,7 +116,7 @@ public class SqlPanel extends BasePanel {
 		sqlP.add(contentsP);
 		sqlP.add(serchP);
 		sqlP.add(homeB);
-//		sqlP.add(optionB);
+		sqlP.add(userB);
 		sqlP.add(logoutB);
 		sqlP.add(compileB);
 		sqlP.add(serchB);

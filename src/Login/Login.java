@@ -19,7 +19,7 @@ import DbMaker.MemberDAO;
 import DbMaker.MemberVo;
 import Main.MainFrame;
 public class Login extends WindowAdapter {
-	private Frame f;
+	private Frame loginF;
 	private TextField tf1, tf2, tf3;
 	private Panel p1, p2;
 	private Label l1, l2;
@@ -29,16 +29,16 @@ public class Login extends WindowAdapter {
 
 	public Login() {
 		MemberDAO dao = new MemberDAO();
-		f = new Frame();
-		f.setLayout(null);
-		f.setSize(400, 600);
+		loginF = new Frame();
+		loginF.setLayout(null);
+		loginF.setSize(400, 600);
 
 		Toolkit tt = Toolkit.getDefaultToolkit();
 		Dimension screenSize = tt.getScreenSize();
-		f.setLocation(screenSize.width / 2 - (400 / 2), screenSize.height / 2 - (600 / 2));
-		f.addWindowListener(this);
-		f.setBackground(Color.green);
-		font1 = new Font("고딕", Font.BOLD, 15);
+		loginF.setLocation(screenSize.width / 2 - (400 / 2), screenSize.height / 2 - (600 / 2));
+		loginF.addWindowListener(this);
+		loginF.setBackground(Color.green);
+		font1 = new Font("고딕", Font.CENTER_BASELINE, 15);
 
 		tf1 = new TextField();
 		p1 = new Panel();
@@ -88,11 +88,11 @@ public class Login extends WindowAdapter {
 						MemberVo data = (MemberVo) list.get(i);
 						String id = data.getId();
 						String password = data.getPassword();
-						System.out.println(id + " : " + password);
+				//		System.out.println(id + " : " + password);
 						if (id.equals(tf1.getText()) && password.equals(tf2.getText())) {
 							tf3.setText("로그인 성공");
-							f.dispose();
-							new MainFrame();
+							loginF.dispose();
+							new MainFrame(tf1.getText());
 						} else {
 							tf3.setText("로그인 실패");
 						}
@@ -109,14 +109,14 @@ public class Login extends WindowAdapter {
 			}
 		});
 
-		f.add(tf3);
-		f.add(p1);
-		f.add(p2);
-		f.add(tf1);
-		f.add(tf2);
-		f.add(b1);
-		f.add(b2);
-		f.setVisible(true);
+		loginF.add(tf3);
+		loginF.add(p1);
+		loginF.add(p2);
+		loginF.add(tf1);
+		loginF.add(tf2);
+		loginF.add(b1);
+		loginF.add(b2);
+		loginF.setVisible(true);
 	}
 
 	public void windowClosing(WindowEvent e) {

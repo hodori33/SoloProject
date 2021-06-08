@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import Main.MainFrame;
+
 public class MemberDAO {
 	private String driver = "oracle.jdbc.driver.OracleDriver";
 	private String url = "jdbc:oracle:thin:@localhost:1521/xe";
@@ -23,10 +25,18 @@ public class MemberDAO {
 		connDB();
 	}
 
-	// 검색 기능
-	public ArrayList<MemberVo> serchDB(String str, String Choice, String serch) {
+	// 로그인 사용자에 따른 검색기록. 개인 페이지에 사용자 검색 기록 출력. 
+	// 검색기록에 카운트를 적용해서 누적시킨다. 많이 검색한 순으로 출력.
+	//
+	// 사용자 아이디로 새로운 테이블 생성.
+	// 아이디에 따른 검색 했던 목록 추가/삭제
+
+	// 검색 기능 & 검색어 해당 유저의 db에 추가
+	public ArrayList<MemberVo> serchDB(String str, String Choice, String serch) {	//클래스이름, 제목or내용, 검색어
 		list = new ArrayList<MemberVo>();
 		try {
+			query = "insert into "+ MainFrame.f.getTitle() +" values('"+ serch +"','"+ serch + "')";
+			rs = stmt.executeQuery(query);
 			query = "select " + str + "_name from java_" + str + " where " + str + "_name like '%" + serch.toUpperCase()
 					+ "%'";
 			rs = stmt.executeQuery(query);
@@ -41,6 +51,43 @@ public class MemberDAO {
 		return list;
 	}
 
+	// 검색 목록 db에서 불러오기
+	public ArrayList<MemberVo> serch_List() {
+		list = new ArrayList<MemberVo>();
+		try {
+			query = "select serch_list from "+ MainFrame.f.getTitle();
+			rs = stmt.executeQuery(query);
+			while (rs.next()) {
+				String name = rs.getString("serch_list");
+				MemberVo data = new MemberVo(name);
+				list.add(data);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	// 검색 목록 db에서 제거
+	public void serch_List_Remove(String str) {
+		try {
+			query = "delete from " + MainFrame.f.getTitle() + " where serch_list=('"+ str +"')";
+			rs = stmt.executeQuery(query);
+		} catch (SQLException e) {
+		}
+	}
+	
+	// 검색 목록 모두 삭제
+	public void serch_List_AllRemove() {
+		try {
+			query = "delete from " + MainFrame.f.getTitle();
+			rs = stmt.executeQuery(query);
+		} catch (SQLException e) {
+		}
+	}
+	
+	// 검색 목록 db에서 불러오기
+	
+	
 	// 목록 조회
 	public ArrayList<MemberVo> selectDB(String str) {
 		list = new ArrayList<MemberVo>();
@@ -112,10 +159,23 @@ public class MemberDAO {
 		}
 	}
 
+	// id/pw테이블
+	public void id_pw(){
+		try {
+			query = "create table person(id varchar2(50), pw varchar2(50))";
+
+			rs = stmt.executeQuery(query);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	// 아이디 중복 체크
 	public boolean idCheck(String id) {
-		query = "SELECT id FROM person";
+	
 		try {
+			query = "SELECT id FROM person";
 			rs = stmt.executeQuery(query);
 
 			while (rs.next()) {
@@ -134,10 +194,12 @@ public class MemberDAO {
 
 	// 아이디 생성
 	public void idCreate(String id, String pw) {
-		query = "insert into person values(" + "'" + id + "','" + pw + "')";
+		
 		try {
+			query = "insert into person values(" + "'" + id + "','" + pw + "')";
 			rs = stmt.executeQuery(query);
-
+			query = "create table "+ id + "(serch_list varchar2(100), serch_date varchar2(30))";
+			rs = stmt.executeQuery(query);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

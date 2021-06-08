@@ -14,7 +14,7 @@ import DbMaker.MemberDAO;
 abstract class BasePanel {
 
 	protected Panel nameP, contentsP, serchP;
-	protected Button homeB, optionB, logoutB, compileB, serchB, closeB, b[];
+	protected Button homeB, userB, logoutB, compileB, serchB, closeB, b[];
 	protected Font font1, font2;
 	protected Choice c1, c2, serchC;
 	protected TextField serchTf;
@@ -53,9 +53,9 @@ abstract class BasePanel {
 	}
 
 	// 옵션 버튼
-	protected void optionButton() {
-		optionB.setFont(font1);
-		optionB.setBounds(100, 630, 60, 40);
+	protected void userButton() {
+		userB.setFont(font1);
+		userB.setBounds(100, 630, 60, 40);
 	}
 
 	// 로그아웃 버튼
@@ -109,14 +109,15 @@ abstract class BasePanel {
 
 	// 내용textarea
 	protected void contentsTa() {
-		conTa.setFont(font2);
+		conTa.setFont(font1);
 		conTa.setBounds(1, 1, 658, 518);
 		conTa.setEditable(false);
 	}
 
 	// 라벨
 	protected void label() {
-		lb.setFont(font1);
+		lb.setSize(140, 40);
+		lb.setFont(font2);
 		lb.setAlignment(Label.CENTER);
 	}
 	// 패널 교체

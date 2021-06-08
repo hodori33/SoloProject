@@ -11,6 +11,10 @@ public class MemberVo {
 	public MemberVo(String name) {
 		this.name = name;
 	}
+	public MemberVo(String id, String password) {
+		this.id = id;
+		this.password = password;
+	}
 
 	public String getName() {
 		return name;
@@ -23,8 +27,5 @@ public class MemberVo {
 	public String getPassword() {
 		return password;
 	}
-	public MemberVo(String id, String password) {
-		this.id = id;
-		this.password = password;
-	}
+
 }
