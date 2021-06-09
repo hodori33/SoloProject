@@ -17,7 +17,7 @@ public class UserPanel {
 	private Label nameLb, p1Lb;
 	private Button b[];
 	private Label lb[];
-	private Button clearB;
+	private Button clearB, reFlashB;
 	private Font font1, font2;
 	private ArrayList<MemberVo> list;
 	private MemberDAO dao;
@@ -65,6 +65,8 @@ public class UserPanel {
 		p1Lb = new Label("님 환영합니다.");
 		clearB = new Button("모두 지우기");
 		clearB.addActionListener(new ActButton(p2));
+		reFlashB = new Button("새로고침");
+		reFlashB.addActionListener(new ActButton(userP));
 		font1 = new Font("맑은 고딕", Font.CENTER_BASELINE, 25);
 		font2 = new Font("맑은 고딕", Font.CENTER_BASELINE, 15);
 	}
@@ -81,7 +83,8 @@ public class UserPanel {
 		p2.setLayout(null);
 		p2.setBackground(Color.green);
 		p2.setBounds(20, 150, 260, 480);
-		clearB.setBounds(115, 650, 70, 30);
+		clearB.setBounds(170, 650, 70, 30);
+		reFlashB.setBounds(100, 650, 70, 30);
 		nameLb.setSize(210, 45);
 		nameLb.setFont(font1);
 		nameLb.setAlignment(Label.CENTER);
@@ -90,15 +93,18 @@ public class UserPanel {
 		p1Lb.setAlignment(Label.CENTER);
 		
 	}
+	//페널 또는 프레임에 추가
 	private void objectAdd() {
 		MainFrame.f.add(userP);
 		userP.add(nameP);
 		userP.add(p1);
 		userP.add(p2);
 		userP.add(clearB);
+		userP.add(reFlashB);
 		nameP.add(nameLb);
 		p1.add(p1Lb);
 	}
+	//현재 페널 닫기
 	public void closePanel() {
 		userP.setVisible(false);
 	}

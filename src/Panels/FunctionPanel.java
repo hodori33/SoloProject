@@ -38,11 +38,16 @@ public class FunctionPanel extends BasePanel {
 
 		// db 조회로 c1목록 채우기
 		list = dao.selectDB(className);
-		for (int i = 0; i < list.size(); i++) {
-			MemberVo data = (MemberVo) list.get(i);
-			String name = data.getName();
-			c1.add(name);
+		if (list != null) {
+			for (int i = 0; i < list.size(); i++) {
+				MemberVo data = (MemberVo) list.get(i);
+				String name = data.getName();
+				c1.add(name);
+			}
+		}else {
+			conTa.setText("DB가 없습니다.");
 		}
+	
 		
 		//검색 버튼을 눌렀을때 패널 전환하고 검색 내용 출력
 		serchB.addActionListener(new ActionListener() {

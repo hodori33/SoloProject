@@ -127,6 +127,7 @@ public class ActButton implements ActionListener {
 			Dimension screenSize = tt.getScreenSize();
 			MainFrame.f.setLocation(screenSize.width / 2 - (700 / 2), screenSize.height / 2 - (700 / 2));
 			new HomePanel();
+
 		}
 		if (e.getActionCommand().equals("검색기록")) {
 			try {
@@ -219,6 +220,10 @@ public class ActButton implements ActionListener {
 			MemberDAO dao = new MemberDAO();
 			dao.serch_List_AllRemove();
 			p1.removeAll();
+		}
+		if (e.getActionCommand().equals("새로고침")) {
+			p1.setVisible(false);
+			new UserPanel();
 		}
 		
 	}

@@ -26,8 +26,6 @@ public class MemberDAO {
 	}
 
 	// 로그인 사용자에 따른 검색기록. 개인 페이지에 사용자 검색 기록 출력. 
-	// 검색기록에 카운트를 적용해서 누적시킨다. 많이 검색한 순으로 출력.
-	//
 	// 사용자 아이디로 새로운 테이블 생성.
 	// 아이디에 따른 검색 했던 목록 추가/삭제
 
@@ -100,7 +98,7 @@ public class MemberDAO {
 				list.add(data);
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			return null;
 		}
 		return list;
 	}

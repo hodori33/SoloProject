@@ -38,11 +38,16 @@ public class SqlPanel extends BasePanel {
 		
 		// db 조회로 c1목록 채우기
 		list = dao.selectDB(className);
-		for (int i = 0; i < list.size(); i++) {
-			MemberVo data = (MemberVo) list.get(i);
-			String name = data.getName();
-			c2.add(name);
+		if (list != null) {
+			for (int i = 0; i < list.size(); i++) {
+				MemberVo data = (MemberVo) list.get(i);
+				String name = data.getName();
+				c2.add(name);
+			}
+		}else {
+			conTa.setText("DB가 없습니다.");
 		}
+
 		
 		serchB.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -71,7 +76,7 @@ public class SqlPanel extends BasePanel {
 		contentsP = new Panel();
 		serchP = new Panel();
 		homeB = new Button("Home");
-		userB = new Button("userB");
+		userB = new Button("검색기록");
 		logoutB = new Button("LogOut");
 		compileB = new Button("Compile");
 		serchB = new Button("확인");
