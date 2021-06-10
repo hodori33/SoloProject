@@ -1,6 +1,7 @@
 package Buttons;
 
 import java.awt.Choice;
+import java.awt.Panel;
 import java.awt.TextArea;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
@@ -45,6 +46,7 @@ public class ChoiceHandler implements ItemListener {
 
 	public void itemStateChanged(ItemEvent e) {
 		dao = new MemberDAO();
+		list = new ArrayList<MemberVo>();
 		if (c1 != null) {
 			if (on_off) {
 				c2.removeAll();
@@ -52,7 +54,7 @@ public class ChoiceHandler implements ItemListener {
 				list = dao.selectDB(name);
 				for (int i = 0; i < list.size(); i++) {
 					MemberVo data = (MemberVo) list.get(i);
-					String temp = data.getName();
+					String temp = data.getTemp1();
 					c2.add(temp);
 				}
 			}

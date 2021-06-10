@@ -18,12 +18,13 @@ import java.util.ArrayList;
 import DbMaker.MemberDAO;
 import DbMaker.MemberVo;
 import Main.MainFrame;
+
 public class Login extends WindowAdapter {
 	private Frame loginF;
 	private TextField tf1, tf2, tf3;
 	private Panel p1, p2;
 	private Label l1, l2;
-	private Button b1, b2;
+	private Button b1, b2, dbB;
 	private Font font1;
 	ArrayList<MemberVo> list;
 
@@ -56,7 +57,7 @@ public class Login extends WindowAdapter {
 		tf2 = new TextField();
 		p2 = new Panel();
 		l2 = new Label("Password");
-		
+
 		tf2.setBounds(190, 450, 100, 25);
 		tf2.setFont(font1);
 		tf2.setEchoChar('*');
@@ -74,6 +75,7 @@ public class Login extends WindowAdapter {
 		b1.setBounds(210, 490, 50, 25);
 		b2 = new Button("Create");
 		b2.setBounds(125, 490, 50, 25);
+		b2.addActionListener(new LoginButton());
 
 		b1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -86,10 +88,9 @@ public class Login extends WindowAdapter {
 					list = dao.list(tf1.getText());
 					for (int i = 0; i < list.size(); i++) {
 						MemberVo data = (MemberVo) list.get(i);
-						String id = data.getId();
-						String password = data.getPassword();
-				//		System.out.println(id + " : " + password);
-						if (id.equals(tf1.getText()) && password.equals(tf2.getText())) {
+						String id = data.getTemp1();
+						String password = data.getTemp2();
+						if (id.toLowerCase().equals(tf1.getText().toLowerCase()) && password.equals(tf2.getText())) {
 							tf3.setText("로그인 성공");
 							loginF.dispose();
 							new MainFrame(tf1.getText());
@@ -101,13 +102,9 @@ public class Login extends WindowAdapter {
 				}
 			}
 		});
-		
-		b2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				new Create();
-				
-			}
-		});
+		dbB = new Button("DB생성");
+		dbB.setBounds(20, 40, 50, 30);
+		dbB.addActionListener(new LoginButton(dbB));
 
 		loginF.add(tf3);
 		loginF.add(p1);
@@ -116,6 +113,7 @@ public class Login extends WindowAdapter {
 		loginF.add(tf2);
 		loginF.add(b1);
 		loginF.add(b2);
+		loginF.add(dbB);
 		loginF.setVisible(true);
 	}
 

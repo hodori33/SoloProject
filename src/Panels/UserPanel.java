@@ -16,7 +16,7 @@ public class UserPanel {
 	private Panel userP, nameP, p1, p2;
 	private Label nameLb, p1Lb;
 	private Button b[];
-	private Label lb[];
+	private Label wordLb[], dateLb[];
 	private Button clearB, reFlashB;
 	private Font font1, font2;
 	private ArrayList<MemberVo> list;
@@ -38,19 +38,27 @@ public class UserPanel {
 		list = dao.serch_List();
 		if(list != null) {
 			b = new Button[list.size()];
-			lb = new Label[list.size()];
+			wordLb = new Label[list.size()];
+			dateLb = new Label[list.size()];
+			int j = 1;
 			for(int i = 0; i < list.size(); i++) {
+				
 				MemberVo data = (MemberVo) list.get(i);
-				String name = data.getName();
-				lb[i] = new Label(name);
-				lb[i].setSize(100, 30);
-				lb[i].setFont(font2);
-				lb[i].setBounds(20, (i+1)*20, 100, 30);
+				wordLb[i] = new Label(data.getTemp1());
+				wordLb[i].setSize(100, 30);
+				wordLb[i].setFont(font2);
+				wordLb[i].setBounds(20, (i+j)*20, 100, 20);
+				dateLb[i] = new Label(data.getTemp2());
+				dateLb[i].setSize(100, 30);
+				dateLb[i].setFont(font2);
+				dateLb[i].setBounds(20, (i+j+1)*20, 220, 20);
 				b[i] = new Button("x");
-				b[i].setBounds(220, (i+1)*20, 20, 20);
-				b[i].addActionListener(new ActButton(b[i], lb[i]));
-				p2.add(lb[i]);
+				b[i].setBounds(220, (i+j)*20, 20, 20);
+				b[i].addActionListener(new ActButton(b[i], wordLb[i], dateLb[i]));
+				p2.add(dateLb[i]);
+				p2.add(wordLb[i]);
 				p2.add(b[i]);
+				j += 2;
 			}
 		}
 	}
@@ -69,6 +77,7 @@ public class UserPanel {
 		reFlashB.addActionListener(new ActButton(userP));
 		font1 = new Font("맑은 고딕", Font.CENTER_BASELINE, 25);
 		font2 = new Font("맑은 고딕", Font.CENTER_BASELINE, 15);
+		list = new ArrayList<MemberVo>();
 	}
 	//객체들 세팅
 	private void objectSet() {

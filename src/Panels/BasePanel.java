@@ -96,7 +96,6 @@ abstract class BasePanel {
 	// 검색 종류
 	protected void serchC() {
 		serchC.add("제목");
-		serchC.add("내용");
 		serchC.setBounds(520, 60, 50, 25);
 	}
 

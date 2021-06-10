@@ -40,7 +40,7 @@ public class TermPanel extends BasePanel {
 		if(list != null) {
 			for (int i = 0; i < list.size(); i++) {
 				MemberVo data = (MemberVo) list.get(i);
-				String name = data.getName();
+				String name = data.getTemp1();
 				c2.add(name);
 			}
 		}else {
@@ -52,12 +52,12 @@ public class TermPanel extends BasePanel {
 		serchB.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				panelOnOff();
-				
-				list = dao.serchDB(className, serchC.getSelectedItem(), serchTf.getText());
+				serchP.removeAll();
+				list = dao.serchDB(className, serchTf.getText());
 				b = new Button[list.size()];
 				for (int i = 0; i < list.size(); i++) {
 					MemberVo data = (MemberVo) list.get(i);
-					String name = data.getName();
+					String name = data.getTemp1();
 					b[i] = new Button(name);					
 					System.out.println(b[i].getLabel());
 					b[i].addActionListener(new ActButton(className, b[i].getLabel(), c2, contentsP, serchP, conTa));
@@ -87,7 +87,8 @@ public class TermPanel extends BasePanel {
 		serchTf = new TextField();
 		conTa = new TextArea("", 0, 0, TextArea.SCROLLBARS_VERTICAL_ONLY);
 		lb = new Label(className.toUpperCase());
-		dao = new MemberDAO();	
+		dao = new MemberDAO();
+		list = new ArrayList<MemberVo>();
 	}
 
 	// 객체 설정

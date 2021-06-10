@@ -36,7 +36,7 @@ public class ActButton implements ActionListener {
 	private Choice c1, c2;
 	private TextArea ta;
 	private Button b1;
-	private Label lb;
+	private Label lb1, lb2;
 	private String cName, name;
 	private ArrayList<MemberVo> list;
 
@@ -73,9 +73,10 @@ public class ActButton implements ActionListener {
 		this.b1 = b1;
 	}
 	// 사용자 패널에 검색 목록 버튼들.
-	public ActButton(Button b1, Label lb) {
+	public ActButton(Button b1, Label lb1, Label lb2) {
 		this.b1 = b1;
-		this.lb = lb;
+		this.lb1 = lb1;
+		this.lb2 = lb2;
 	}
 
 	@Override
@@ -198,7 +199,7 @@ public class ActButton implements ActionListener {
 				list = dao.selectDB(name);
 				for (int i = 0; i < list.size(); i++) {
 					MemberVo data = (MemberVo) list.get(i);
-					String temp = data.getName();
+					String temp = data.getTemp1();
 					c2.add(temp);
 				}
 				c2.select(0);
@@ -212,9 +213,10 @@ public class ActButton implements ActionListener {
 		
 		if (e.getActionCommand().equals("x")) {
 			MemberDAO dao = new MemberDAO();
-			dao.serch_List_Remove(lb.getText());
+			dao.serch_List_Remove(lb1.getText());
 			b1.setVisible(false);
-			lb.setVisible(false);	
+			lb1.setVisible(false);
+			lb2.setVisible(false);	
 		}
 		if (e.getActionCommand().equals("모두 지우기")) {
 			MemberDAO dao = new MemberDAO();

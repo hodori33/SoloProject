@@ -1,31 +1,24 @@
 package DbMaker;
 
 public class MemberVo {
-	private String name;
-	private String id;
-	private String password;
+	private String temp1, temp2;
 	
 	public MemberVo() {
 	}
 
-	public MemberVo(String name) {
-		this.name = name;
+	public MemberVo(String temp1) {
+		this.temp1 = temp1;
 	}
-	public MemberVo(String id, String password) {
-		this.id = id;
-		this.password = password;
+	public MemberVo(String temp1, String temp2) {
+		this.temp1 = temp1;
+		this.temp2 = temp2;
 	}
 
-	public String getName() {
-		return name;
+	public String getTemp1() {
+		return temp1;
 	}
 	
-	public String getId() {
-		return id;
+	public String getTemp2() {
+		return temp2;
 	}
-
-	public String getPassword() {
-		return password;
-	}
-
 }

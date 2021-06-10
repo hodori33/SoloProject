@@ -97,10 +97,10 @@ public class Create extends WindowAdapter{
 		bOk.setBounds(140, 400, 50, 25);
 		bCancle.setBounds(210, 400, 50, 25);
 		
-		bOk.addActionListener(new CreateButton()); 
-		bCancle.addActionListener(new CreateButton()); 
-		bId.addActionListener(new CreateButton()); 
-		bPw.addActionListener(new CreateButton());
+		bOk.addActionListener(new LoginButton()); 
+		bCancle.addActionListener(new LoginButton()); 
+		bId.addActionListener(new LoginButton()); 
+		bPw.addActionListener(new LoginButton());
 		
 		//Id
 		loginf.add(pId);
