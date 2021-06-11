@@ -27,12 +27,14 @@ public class MemberDAO {
 	public MemberDAO() {
 		connDB();
 	}
-	//초기에 존재해야하는 테이블들 생성
+
+	// 초기에 존재해야하는 테이블들 생성
 	public void baseDB() {
 		person();
 		serch_List_Create();
 		serch_Count_Create();
 	}
+
 	// id/pw 테이블 생성
 	public void person() {
 		try {
@@ -59,31 +61,48 @@ public class MemberDAO {
 	// 검색어 카운트 테이블
 	public void serch_Count_Create() {
 		try {
-			query = "create table serch_count(word varchar2(100), count int)";
+			query = "create table serch_count(c_word varchar2(100), c_count int)";
 			rs = stmt.executeQuery(query);
 			System.out.println("serch_count table create!");
 		} catch (SQLException e) {
 		}
 	}
 
-	// 검색어 리스트에 추가 & 검색어 카운트 & 검색 기능 
-	public ArrayList<MemberVo> serchDB(String str, String serch) { // 클래스이름, 제목or내용, 검색어
+	// 검색어 카운트 테이블 조회
+	public ArrayList<MemberVo> serch_Count() {
+		list = new ArrayList<MemberVo>();
+		try {
+			query = "select c_word, c_count from serch_count order by c_count desc";
+			rs = stmt.executeQuery(query);
+			while (rs.next()) {
+				String word = rs.getString("c_word");
+				MemberVo data = new MemberVo(word);
+				list.add(data);
+			}
+		} catch (SQLException e) {
+		}
+		return list;
+	}
+
+	// 검색어 리스트에 추가 & 검색어 카운트 & 검색 기능
+	public ArrayList<MemberVo> serchDB(String str, String serch) { // 클래스이름, 검색어
 		list = new ArrayList<MemberVo>();
 		now = LocalDateTime.now();
 		dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy년 M월 d일 a h시 m분");
 		try {
-			//검색어를 검색어목록 테이블에 insert or update.(검색어, 날짜, 사용자)
-			query = "merge into serch_list using dual on (serch_word = '"+ serch +"' and person_id='"+ MainFrame.f.getTitle().toLowerCase() + "')"
-					+ "when matched then update set serch_date = '" + now.format(dateTimeFormatter) + "'"
-					+ "when not matched then insert (serch_word, serch_date, person_id) "
-					+ "values ('"+ serch +"', '"+ now.format(dateTimeFormatter) +"','"+ MainFrame.f.getTitle().toLowerCase() +"')";
+			// 검색어를 검색어목록 테이블에 insert or update.(검색어, 날짜, 사용자)
+			query = "merge into serch_list using dual on (serch_word = '" + serch + "' and person_id='"
+					+ MainFrame.f.getTitle().toLowerCase() + "')" + "when matched then update set serch_date = '"
+					+ now.format(dateTimeFormatter) + "'"
+					+ "when not matched then insert (serch_word, serch_date, person_id) " + "values ('" + serch + "', '"
+					+ now.format(dateTimeFormatter) + "','" + MainFrame.f.getTitle().toLowerCase() + "')";
 			rs = stmt.executeQuery(query);
-			//검색어를 카운트 테이블에서 있으면 count 없으면 insert.
-			query = "merge into serch_count using dual on (word = '"+ serch +"')"
-					+ "when matched then update set count = count +1"
-					+ "when not matched then insert (word, count) values ('"+ serch +"', 1)";
+			// 검색어를 카운트 테이블에서 있으면 count 없으면 insert.
+			query = "merge into serch_count using dual on (c_word = '" + serch + "')"
+					+ "when matched then update set c_count = c_count +1"
+					+ "when not matched then insert (c_word, c_count) values ('" + serch + "', 1)";
 			rs = stmt.executeQuery(query);
-			//검색어를 해당 테이블에서 검색한다.
+			// 검색어를 해당 테이블에서 검색한다.
 			query = "select " + str + "_name from java_" + str + " where " + str + "_name like '%" + serch.toUpperCase()
 					+ "%'";
 			rs = stmt.executeQuery(query);
@@ -102,7 +121,8 @@ public class MemberDAO {
 	public ArrayList<MemberVo> serch_List() {
 		list = new ArrayList<MemberVo>();
 		try {
-			query = "select serch_word, serch_date from serch_list where person_id = '" + MainFrame.f.getTitle().toLowerCase() + "'";
+			query = "select serch_word, serch_date from serch_list where person_id = '"
+					+ MainFrame.f.getTitle().toLowerCase() + "'";
 			rs = stmt.executeQuery(query);
 			while (rs.next()) {
 				String word = rs.getString("serch_word");
@@ -119,7 +139,8 @@ public class MemberDAO {
 	// 검색 목록 db에서 제거
 	public void serch_List_Remove(String str) {
 		try {
-			query = "delete from serch_list where serch_word ='" + str + "'and person_id = '" + MainFrame.f.getTitle().toLowerCase() + "'";
+			query = "delete from serch_list where serch_word ='" + str + "'and person_id = '"
+					+ MainFrame.f.getTitle().toLowerCase() + "'";
 			rs = stmt.executeQuery(query);
 		} catch (SQLException e) {
 		}
@@ -128,7 +149,7 @@ public class MemberDAO {
 	// 검색 목록 모두 삭제
 	public void serch_List_AllRemove() {
 		try {
-			query = "delete from serch_list where person_id = " + MainFrame.f.getTitle().toLowerCase();
+			query = "delete from serch_list where person_id = '" + MainFrame.f.getTitle().toLowerCase() + "'";
 			rs = stmt.executeQuery(query);
 		} catch (SQLException e) {
 		}
@@ -173,8 +194,8 @@ public class MemberDAO {
 	// 테이블 생성
 	public void createTable(String table_name) {
 		try {
-			query = "create table java_" + table_name + "(" + table_name + "_id int, " + table_name
-					+ "_name varchar2(100), " + table_name + "_contents varchar2(4000))";
+			query = "create table java_" + table_name + "(" + table_name + "_name varchar2(100), " + table_name
+					+ "_contents varchar2(4000))";
 			rs = stmt.executeQuery(query);
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -182,9 +203,9 @@ public class MemberDAO {
 	}
 
 	// table_name에 내용 넣기
-	public void insert(String table_name, int cnt, String str, String str2) {
+	public void insert(String table_name, String str, String str2) {
 		try {
-			String query = "insert into java_" + table_name + " values('" + cnt + "', '" + str + "', '" + str2 + "')";
+			query = "insert into java_" + table_name + " values('" + str + "', '" + str2 + "')";
 			rs = stmt.executeQuery(query);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -192,14 +213,35 @@ public class MemberDAO {
 
 	}
 
-	// table삭제
-	public void removeTable(String table_name) {
+	// function table 필요없는 필드 삭제.
+	public void remove_field() {
 		try {
-			query = "drop table java_" + table_name;
+			query = "alter table java_function drop column function_contents";
 			rs = stmt.executeQuery(query);
-			System.out.println("삭제 완료!");
 		} catch (SQLException e) {
-			System.out.println("없는 테이블");
+		}
+	}
+
+	// 모든 DB삭제
+	public void removeAll() {
+		list = new ArrayList<MemberVo>();
+		try {
+			query = "select 'drop table ' || object_name || ' cascade constraints' from user_objects where object_type = 'TABLE'";
+			rs = stmt.executeQuery(query);
+			System.out.println(query);
+			while (rs.next()) {
+				String name = rs.getString("'DROPTABLE'||OBJECT_NAME||'CASCADECONSTRAINTS'");
+				MemberVo data = new MemberVo(name);
+				list.add(data);
+			}
+			for (int i = 0; i < list.size(); i++) {
+				MemberVo data = (MemberVo) list.get(i);
+				query = data.getTemp1();
+				System.out.println(query);
+				rs = stmt.executeQuery(query);
+			}
+		} catch (SQLException e) {
+			System.out.println("테이블 없음");
 		}
 	}
 
@@ -223,10 +265,10 @@ public class MemberDAO {
 
 	}
 
-	// 아이디 생성 @
+	// 아이디 생성
 	public void idCreate(String id, String pw) {
 		try {
-			query = "insert into person values('"+ id.toLowerCase() + "','" + pw.toLowerCase() + "')";
+			query = "insert into person values('" + id.toLowerCase() + "','" + pw.toLowerCase() + "')";
 			rs = stmt.executeQuery(query);
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -237,7 +279,7 @@ public class MemberDAO {
 	public ArrayList<MemberVo> list(String name) {
 		list = new ArrayList<MemberVo>();
 		try {
-			query = "select * from person where person_id = '" + name.toLowerCase() +"'";
+			query = "select * from person where person_id = '" + name.toLowerCase() + "'";
 			rs = stmt.executeQuery(query);
 			while (rs.next()) {
 				String id = rs.getString("person_id");

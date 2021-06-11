@@ -1,13 +1,6 @@
 package Panels;
 
-import java.awt.Button;
-import java.awt.Choice;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Label;
-import java.awt.Panel;
-import java.awt.TextArea;
-import java.awt.TextField;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -22,7 +15,7 @@ public class FunctionPanel extends BasePanel {
 	private Panel functionP;
 	private ArrayList<MemberVo> list;
 	private final String className = "function";
-	
+
 	public FunctionPanel() {
 		// Function 패널
 		functionP = new Panel();
@@ -31,7 +24,7 @@ public class FunctionPanel extends BasePanel {
 		functionP.setBounds(10, 10, 680, 700);
 		OnOff1 = true;
 		OnOff2 = false;
-		
+
 		newFunction();
 		setFunction();
 		addFunction();
@@ -44,12 +37,11 @@ public class FunctionPanel extends BasePanel {
 				String name = data.getTemp1();
 				c1.add(name);
 			}
-		}else {
+		} else {
 			conTa.setText("DB가 없습니다.");
 		}
-	
-		
-		//검색 버튼을 눌렀을때 패널 전환하고 검색 내용 출력
+
+		// 검색 버튼을 눌렀을때 패널 전환하고 검색 내용 출력
 		serchB.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				panelOnOff();
@@ -59,7 +51,7 @@ public class FunctionPanel extends BasePanel {
 				for (int i = 0; i < list.size(); i++) {
 					MemberVo data = (MemberVo) list.get(i);
 					String name = data.getTemp1();
-					b[i] = new Button(name);					
+					b[i] = new Button(name);
 					System.out.println(b[i].getLabel());
 					b[i].addActionListener(new ActButton(className, b[i].getLabel(), c1, c2, contentsP, serchP, conTa));
 					serchP.add(b[i]);
@@ -81,7 +73,7 @@ public class FunctionPanel extends BasePanel {
 		logoutB = new Button("LogOut");
 		compileB = new Button("Compile");
 		serchB = new Button("확인");
-		closeB = new Button("검색 닫기");		//안쓰는 버튼
+		closeB = new Button("검색 닫기"); // 안쓰는 버튼
 		font1 = new Font("맑은 고딕", Font.BOLD, 15);
 		font2 = new Font("고딕", Font.BOLD, 20);
 		c1 = new Choice();
@@ -93,7 +85,7 @@ public class FunctionPanel extends BasePanel {
 		dao = new MemberDAO();
 		list = new ArrayList<MemberVo>();
 	}
-	
+
 	// 객체들 세팅
 	private void setFunction() {
 		namePanel();
@@ -101,7 +93,7 @@ public class FunctionPanel extends BasePanel {
 		serchP();
 		homeButton();
 		userButton();
- 		logoutButton();
+		logoutButton();
 		compileButton();
 		serchB();
 		closeB();
@@ -111,12 +103,12 @@ public class FunctionPanel extends BasePanel {
 		serchTf();
 		contentsTa();
 		label();
-		
+
 		homeB.addActionListener(new ActButton(functionP));
 		userB.addActionListener(new ActButton(userB));
 		logoutB.addActionListener(new ActButton());
 		compileB.addActionListener(new ActButton());
-		
+
 		c1.addItemListener(new ChoiceHandler(c1, c2, className));
 		c2.addItemListener(new ChoiceHandler(conTa, c1, c2, className));
 	}

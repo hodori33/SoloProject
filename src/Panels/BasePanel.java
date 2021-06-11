@@ -1,13 +1,6 @@
 package Panels;
 
-import java.awt.Button;
-import java.awt.Choice;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Label;
-import java.awt.Panel;
-import java.awt.TextArea;
-import java.awt.TextField;
+import java.awt.*;
 
 import DbMaker.MemberDAO;
 
@@ -22,7 +15,7 @@ abstract class BasePanel {
 	protected Label lb;
 	protected MemberDAO dao;
 	protected boolean OnOff1, OnOff2;
-	
+
 	// 이름 패널
 	protected void namePanel() {
 		nameP.setLayout(null);
@@ -119,6 +112,7 @@ abstract class BasePanel {
 		lb.setFont(font2);
 		lb.setAlignment(Label.CENTER);
 	}
+
 	// 패널 교체
 	protected void panelOnOff() {
 		contentsP.setVisible(!OnOff1);

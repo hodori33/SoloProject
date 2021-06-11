@@ -10,12 +10,11 @@ import Panels.HomePanel;
 
 public class MainFrame extends WindowAdapter {
 	public static Frame f;
-	
+
 	public MainFrame(String user) {
 		f = new Frame(user);
 		f.setLayout(null);
 		f.setBounds(0, 0, 700, 700);
-		
 
 		Toolkit tt = Toolkit.getDefaultToolkit();
 		Dimension screenSize = tt.getScreenSize();

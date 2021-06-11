@@ -1,7 +1,6 @@
 package Buttons;
 
 import java.awt.Choice;
-import java.awt.Panel;
 import java.awt.TextArea;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;

@@ -1,13 +1,6 @@
 package Panels;
 
-import java.awt.Button;
-import java.awt.Choice;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Label;
-import java.awt.Panel;
-import java.awt.TextArea;
-import java.awt.TextField;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -22,7 +15,7 @@ public class TermPanel extends BasePanel {
 	private Panel termP;
 	private ArrayList<MemberVo> list;
 	private final String className = "term";
-	
+
 	public TermPanel() {
 		termP = new Panel();
 		termP.setLayout(null);
@@ -30,25 +23,23 @@ public class TermPanel extends BasePanel {
 		termP.setBounds(10, 10, 680, 700);
 		OnOff1 = true;
 		OnOff2 = false;
-		
+
 		newTerm();
 		setTerm();
 		addTerm();
-		
-		//db 조회로 c1목록 채우기	
+
+		// db 조회로 c1목록 채우기
 		list = dao.selectDB(className);
-		if(list != null) {
+		if (list != null) {
 			for (int i = 0; i < list.size(); i++) {
 				MemberVo data = (MemberVo) list.get(i);
 				String name = data.getTemp1();
 				c2.add(name);
 			}
-		}else {
+		} else {
 			conTa.setText("DB가 없습니다.");
 		}
 
-		
-		
 		serchB.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				panelOnOff();
@@ -58,14 +49,14 @@ public class TermPanel extends BasePanel {
 				for (int i = 0; i < list.size(); i++) {
 					MemberVo data = (MemberVo) list.get(i);
 					String name = data.getTemp1();
-					b[i] = new Button(name);					
+					b[i] = new Button(name);
 					System.out.println(b[i].getLabel());
 					b[i].addActionListener(new ActButton(className, b[i].getLabel(), c2, contentsP, serchP, conTa));
 					serchP.add(b[i]);
 					b[i].setBounds(10, (i + 1) * 40, 70, 30);
 				}
 			}
-		});	
+		});
 		MainFrame.f.add(termP);
 	}
 
@@ -98,8 +89,8 @@ public class TermPanel extends BasePanel {
 		serchP();
 		homeButton();
 		userButton();
- 		logoutButton();
- 		compileButton();
+		logoutButton();
+		compileButton();
 		serchB();
 		closeB();
 		choice2();
@@ -107,10 +98,11 @@ public class TermPanel extends BasePanel {
 		serchTf();
 		contentsTa();
 		label();
-		
+
 		homeB.addActionListener(new ActButton(termP));
 		userB.addActionListener(new ActButton(userB));
 		logoutB.addActionListener(new ActButton());
+		compileB.addActionListener(new ActButton());
 		c2.addItemListener(new ChoiceHandler(conTa, c2, className));
 	}
 

@@ -11,16 +11,11 @@ public class TermDbMaker {
 	private MemberDAO dao = new MemberDAO();
 
 	public TermDbMaker() {
-		dao.connDB();
-	}
-
-	public void createTermTable() {
 		BufferedReader reader = null;
 		Reader r = null;
 		String temp = "";
 
 		String name, data;
-		int cnt = 1;
 		try {
 			r = new FileReader("C:\\Users\\hodori\\Desktop\\db만들기\\Term.txt", StandardCharsets.UTF_8);
 			reader = new BufferedReader(r);
@@ -40,9 +35,8 @@ public class TermDbMaker {
 					String arr = data.toString() + "\n"; // temp 문장 이어 붙이기
 					temp += arr;
 				}
-				dao.insert("term",cnt, name, temp); // temp로 name테이블의 contents항목에 insert.
+				dao.insert("term", name, temp); // temp로 name테이블의 contents항목에 insert.
 				temp = "";
-				cnt++; // 넘버링
 			}
 
 		} catch (FileNotFoundException e) {
@@ -51,9 +45,4 @@ public class TermDbMaker {
 			e.printStackTrace();
 		}
 	}
-
-	public void removeTable() {
-		dao.removeTable("term");
-	}
-
 }

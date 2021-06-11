@@ -1,14 +1,6 @@
 package Login;
 
-import java.awt.Button;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.Frame;
-import java.awt.Label;
-import java.awt.Panel;
-import java.awt.TextField;
-import java.awt.Toolkit;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
@@ -24,7 +16,7 @@ public class Login extends WindowAdapter {
 	private TextField tf1, tf2, tf3;
 	private Panel p1, p2;
 	private Label l1, l2;
-	private Button b1, b2, dbB;
+	private Button b1, b2, dbB, redbB;
 	private Font font1;
 	ArrayList<MemberVo> list;
 
@@ -104,7 +96,11 @@ public class Login extends WindowAdapter {
 		});
 		dbB = new Button("DB생성");
 		dbB.setBounds(20, 40, 50, 30);
-		dbB.addActionListener(new LoginButton(dbB));
+		dbB.addActionListener(new LoginButton());
+
+		redbB = new Button("DB삭제");
+		redbB.setBounds(80, 40, 50, 30);
+		redbB.addActionListener(new LoginButton());
 
 		loginF.add(tf3);
 		loginF.add(p1);
@@ -114,6 +110,7 @@ public class Login extends WindowAdapter {
 		loginF.add(b1);
 		loginF.add(b2);
 		loginF.add(dbB);
+		loginF.add(redbB);
 		loginF.setVisible(true);
 	}
 

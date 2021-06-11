@@ -1,22 +1,15 @@
 package Login;
 
-import java.awt.Button;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import DbMaker.FunctionDbMaker;
 import DbMaker.MemberDAO;
+import DbMaker.SqlDbMaker;
+import DbMaker.TermDbMaker;
 
 public class LoginButton implements ActionListener {
-	private Button b1;
 	private MemberDAO dao;
-
-	public LoginButton() {
-
-	}
-
-	public LoginButton(Button b1) {
-		this.b1 = b1;
-	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -50,8 +43,13 @@ public class LoginButton implements ActionListener {
 			new Create();
 		}
 		if (e.getActionCommand().equals("DB생성")) {
-			b1.setVisible(false);
 			dao.baseDB();
+			new SqlDbMaker();
+			new TermDbMaker();
+			new FunctionDbMaker();
+		}
+		if (e.getActionCommand().equals("DB삭제")) {
+			dao.removeAll();
 		}
 
 	}
