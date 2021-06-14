@@ -31,13 +31,13 @@ public class LoginButton implements ActionListener {
 			if (dao.idCheck(Create.tfId.getText()) && Create.tfPw.getText().equals(Create.tfRePw.getText())) {
 				dao.idCreate(Create.tfId.getText(), Create.tfPw.getText());
 				System.out.println("생성 완료!");
-				Create.loginf.dispose();
+				Create.createF.dispose();
 			} else
 				System.out.println("생성 실패");
 
 		}
 		if (e.getActionCommand().equals("취소")) {
-			Create.loginf.dispose();
+			Create.createF.dispose();
 		}
 		if (e.getActionCommand().equals("Create")) {
 			new Create();

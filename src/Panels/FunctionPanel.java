@@ -1,6 +1,13 @@
 package Panels;
 
-import java.awt.*;
+import java.awt.Button;
+import java.awt.Choice;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Label;
+import java.awt.Panel;
+import java.awt.TextArea;
+import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -40,7 +47,7 @@ public class FunctionPanel extends BasePanel {
 		} else {
 			conTa.setText("DB가 없습니다.");
 		}
-
+	
 		// 검색 버튼을 눌렀을때 패널 전환하고 검색 내용 출력
 		serchB.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -110,7 +117,7 @@ public class FunctionPanel extends BasePanel {
 		compileB.addActionListener(new ActButton());
 
 		c1.addItemListener(new ChoiceHandler(c1, c2, className));
-		c2.addItemListener(new ChoiceHandler(conTa, c1, c2, className));
+		c2.addItemListener(new ChoiceHandler(conTa, serchP, contentsP, c1, c2, className));
 	}
 
 	// 패널에 추가

@@ -103,7 +103,7 @@ public class TermPanel extends BasePanel {
 		userB.addActionListener(new ActButton(userB));
 		logoutB.addActionListener(new ActButton());
 		compileB.addActionListener(new ActButton());
-		c2.addItemListener(new ChoiceHandler(conTa, c2, className));
+		c2.addItemListener(new ChoiceHandler(conTa, serchP, contentsP, c2, className));
 	}
 
 	// 패널에 추가

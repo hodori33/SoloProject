@@ -5,7 +5,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 public class Create extends WindowAdapter {
-	static Frame loginf;
+	static Frame createF;
 	public static TextField tfId, tfIdC, tfPw, tfRePw, tfPwC, tfEm, tfEmC;
 	private Label lId, lPw, lRePw;
 	private Panel pId, pPw, pRePw;
@@ -13,16 +13,18 @@ public class Create extends WindowAdapter {
 	private Font font1;
 
 	Create() {
-		loginf = new Frame();
-		loginf.setLayout(null);
-		loginf.setSize(400, 500);
-		loginf.setVisible(true);
+		createF = new Frame();
+		createF.setLayout(null);
+		createF.setSize(400, 500);
+		createF.setVisible(true);
+		createF.setResizable(false);
+		
 
 		Toolkit tt = Toolkit.getDefaultToolkit();
 		Dimension screenSize = tt.getScreenSize();
-		loginf.setLocation(screenSize.width / 2 - (400 / 2), screenSize.height / 2 - (500 / 2));
-		loginf.addWindowListener(this);
-		loginf.setBackground(Color.green);
+		createF.setLocation(screenSize.width / 2 - (400 / 2), screenSize.height / 2 - (500 / 2));
+		createF.addWindowListener(this);
+		createF.setBackground(Color.green);
 		font1 = new Font("고딕", Font.BOLD, 15);
 
 		// Id
@@ -94,27 +96,27 @@ public class Create extends WindowAdapter {
 		bPw.addActionListener(new LoginButton());
 
 		// Id
-		loginf.add(pId);
-		loginf.add(tfId);
-		loginf.add(bId);
-		loginf.add(tfIdC);
+		createF.add(pId);
+		createF.add(tfId);
+		createF.add(bId);
+		createF.add(tfIdC);
 		// PW
-		loginf.add(pPw);
-		loginf.add(tfPw);
-		loginf.add(bPw);
-		loginf.add(tfRePw);
-		loginf.add(pRePw);
-		loginf.add(tfPwC);
+		createF.add(pPw);
+		createF.add(tfPw);
+		createF.add(bPw);
+		createF.add(tfRePw);
+		createF.add(pRePw);
+		createF.add(tfPwC);
 		// E-mail
 		//
 		// ok 와 cancle 버튼
-		loginf.add(bOk);
-		loginf.add(bCancle);
+		createF.add(bOk);
+		createF.add(bCancle);
 
 	}
 
 	public void windowClosing(WindowEvent e) {
-		loginf.dispose();
+		createF.dispose();
 	}
 
 }

@@ -1,6 +1,7 @@
 package Buttons;
 
 import java.awt.Choice;
+import java.awt.Panel;
 import java.awt.TextArea;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
@@ -13,6 +14,7 @@ public class ChoiceHandler implements ItemListener {
 	private Choice c1, c2;
 	private String table_name, name, str;
 	private TextArea ta;
+	private Panel p1, p2;
 	private ArrayList<MemberVo> list;
 	private MemberDAO dao;
 	private boolean on_off = true;
@@ -21,8 +23,10 @@ public class ChoiceHandler implements ItemListener {
 	}
 
 	// term, sql 패널에서 초이스가 1개 일때 2번초이스
-	public ChoiceHandler(TextArea ta, Choice c2, String table_name) {
+	public ChoiceHandler(TextArea ta, Panel p1, Panel p2, Choice c2, String table_name) {
 		this.ta = ta;
+		this.p1 = p1;
+		this.p2 = p2;
 		this.table_name = table_name;
 		this.c2 = c2;
 	}
@@ -35,8 +39,10 @@ public class ChoiceHandler implements ItemListener {
 	}
 
 	// function 패널에서 초이스가 2개 일때 2번초이스
-	public ChoiceHandler(TextArea ta, Choice c1, Choice c2, String table_name) {
+	public ChoiceHandler(TextArea ta, Panel p1, Panel p2, Choice c1, Choice c2, String table_name) {
 		this.ta = ta;
+		this.p1 = p1;
+		this.p2 = p2;
 		this.c1 = c1;
 		this.c2 = c2;
 		this.table_name = table_name;
@@ -46,6 +52,11 @@ public class ChoiceHandler implements ItemListener {
 	public void itemStateChanged(ItemEvent e) {
 		dao = new MemberDAO();
 		list = new ArrayList<MemberVo>();
+		if(ta != null) {
+			ta.setVisible(true);
+			p1.setVisible(false);
+			p2.setVisible(true);
+		}
 		if (c1 != null) {
 			if (on_off) {
 				c2.removeAll();

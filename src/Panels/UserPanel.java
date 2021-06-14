@@ -73,8 +73,8 @@ public class UserPanel {
 				}
 				MemberVo data = (MemberVo) list.get(i);
 				countLb[i] = new Label(i + 1 + ". " + data.getTemp1());
-				countLb[i].setSize(80, 30);
-				countLb[i].setBounds(i * 100, 0, 100, 30);
+				countLb[i].setSize(200, 30);
+				countLb[i].setBounds(10, (i)*20, 200, 25);
 				countLb[i].setFont(font2);
 				p3.add(countLb[i]);
 			}
@@ -107,16 +107,16 @@ public class UserPanel {
 		userP.setBounds(691, 0, 300, 700);
 		nameP.setLayout(null);
 		nameP.setBackground(Color.red);
-		nameP.setBounds(40, 40, 220, 50);
+		nameP.setBounds(40, 40, 220, 40);
 		p1.setBackground(Color.green);
-		p1.setBounds(40, 90, 220, 30);
+		p1.setBounds(40, 80, 220, 30);
 		p1.setLayout(null);
 		p2.setLayout(null);
 		p2.setBackground(Color.green);
-		p2.setBounds(10, 140, 280, 480);
+		p2.setBounds(10, 120, 280, 510);
 		p3.setBackground(Color.yellow);
 		p3.setLayout(null);
-		p3.setBounds(10, 440, 260, 30);
+		p3.setBounds(10, 430, 260, 70);
 		clearB.setBounds(170, 650, 70, 30);
 		reFlashB.setBounds(70, 650, 70, 30);
 		nameLb.setSize(210, 45);

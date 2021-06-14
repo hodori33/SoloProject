@@ -3,11 +3,10 @@ package Panels;
 import java.awt.Button;
 import java.awt.Color;
 import java.awt.Panel;
-
 import Buttons.ActButton;
 import Main.MainFrame;
 
-public class HomePanel {
+public class HomePanel{
 	private Panel homeP;
 	private Button[] b;
 	private String[] bName = { "Java Funtion", "Java Term", "SQL" };
@@ -17,7 +16,8 @@ public class HomePanel {
 		homeP.setLayout(null);
 		homeP.setBackground(Color.green);
 		homeP.setBounds(10, 10, 680, 700);
-
+		
+		
 		b = new Button[bName.length];
 
 		for (int i = 0; i < bName.length; i++) {

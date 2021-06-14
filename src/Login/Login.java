@@ -18,13 +18,14 @@ public class Login extends WindowAdapter {
 	private Label l1, l2;
 	private Button b1, b2, dbB, redbB;
 	private Font font1;
-	ArrayList<MemberVo> list;
+	private ArrayList<MemberVo> list;
 
 	public Login() {
 		MemberDAO dao = new MemberDAO();
 		loginF = new Frame();
 		loginF.setLayout(null);
 		loginF.setSize(400, 600);
+		loginF.setResizable(false);
 
 		Toolkit tt = Toolkit.getDefaultToolkit();
 		Dimension screenSize = tt.getScreenSize();
@@ -36,7 +37,7 @@ public class Login extends WindowAdapter {
 		tf1 = new TextField();
 		p1 = new Panel();
 		l1 = new Label("ID");
-
+			
 		tf1.setBounds(190, 420, 100, 25);
 		tf1.setFont(font1);
 		tf1.setCaretPosition(25);
@@ -68,7 +69,7 @@ public class Login extends WindowAdapter {
 		b2 = new Button("Create");
 		b2.setBounds(125, 490, 50, 25);
 		b2.addActionListener(new LoginButton());
-
+		
 		b1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				tf3.setText("");

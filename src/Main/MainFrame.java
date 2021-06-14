@@ -20,6 +20,7 @@ public class MainFrame extends WindowAdapter {
 		Dimension screenSize = tt.getScreenSize();
 		f.setLocation(screenSize.width / 2 - (700 / 2), screenSize.height / 2 - (700 / 2));
 		f.addWindowListener(this);
+		f.setResizable(false);
 		f.setVisible(true);
 		new HomePanel();
 	}

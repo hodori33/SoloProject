@@ -1,7 +1,6 @@
 package Panels;
 
 import java.awt.*;
-
 import DbMaker.MemberDAO;
 
 abstract class BasePanel {

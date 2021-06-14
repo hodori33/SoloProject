@@ -50,7 +50,7 @@ public class MemberDAO {
 	// 검색어 목록 테이블 생성
 	public void serch_List_Create() {
 		try {
-			query = "create table serch_list(serch_word varchar2(100), serch_date varchar2(50), person_id varchar2(30), "
+			query = "create table serch_list(serch_word varchar2(100) not null, serch_date varchar2(50)  not null, person_id varchar2(30), "
 					+ "constraint fk_serch_list foreign key(person_id) references person(person_id))";
 			rs = stmt.executeQuery(query);
 			System.out.println("serch_list table create!");
@@ -61,7 +61,7 @@ public class MemberDAO {
 	// 검색어 카운트 테이블
 	public void serch_Count_Create() {
 		try {
-			query = "create table serch_count(c_word varchar2(100), c_count int)";
+			query = "create table serch_count(c_word varchar2(100) not null, c_count int not null)";
 			rs = stmt.executeQuery(query);
 			System.out.println("serch_count table create!");
 		} catch (SQLException e) {
@@ -122,7 +122,7 @@ public class MemberDAO {
 		list = new ArrayList<MemberVo>();
 		try {
 			query = "select serch_word, serch_date from serch_list where person_id = '"
-					+ MainFrame.f.getTitle().toLowerCase() + "'";
+					+ MainFrame.f.getTitle().toLowerCase() + "' order by serch_date desc";
 			rs = stmt.executeQuery(query);
 			while (rs.next()) {
 				String word = rs.getString("serch_word");
