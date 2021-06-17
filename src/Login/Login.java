@@ -15,9 +15,9 @@ public class Login extends WindowAdapter {
 	private Frame loginF;
 	private TextField tf1, tf2, tf3;
 	private Panel p1, p2;
-	private Label l1, l2;
+	private Label nameLb, l1, l2;
 	private Button b1, b2, dbB, redbB;
-	private Font font1;
+	private Font font1, font2;
 	private ArrayList<MemberVo> list;
 
 	public Login() {
@@ -33,11 +33,18 @@ public class Login extends WindowAdapter {
 		loginF.addWindowListener(this);
 		loginF.setBackground(Color.green);
 		font1 = new Font("고딕", Font.CENTER_BASELINE, 15);
-
+		font2 = new Font("고딕", Font.CENTER_BASELINE, 30);
+		//제목 라벨
+		nameLb = new Label("Java Dictionary");
+		nameLb.setBounds(95, 120, 240, 70);
+		nameLb.setFont(font2);
+		loginF.add(nameLb);
+		
+		//ID
 		tf1 = new TextField();
 		p1 = new Panel();
 		l1 = new Label("ID");
-			
+	
 		tf1.setBounds(190, 420, 100, 25);
 		tf1.setFont(font1);
 		tf1.setCaretPosition(25);
@@ -46,7 +53,7 @@ public class Login extends WindowAdapter {
 		l1.setAlignment(Label.CENTER);
 		l1.setFont(font1);
 		p1.add(l1);
-
+		//PassWord
 		tf2 = new TextField();
 		p2 = new Panel();
 		l2 = new Label("Password");
@@ -59,11 +66,11 @@ public class Login extends WindowAdapter {
 		l2.setAlignment(Label.CENTER);
 		l2.setFont(font1);
 		p2.add(l2);
-
+		//로그인 결과
 		tf3 = new TextField();
 		tf3.setBounds(150, 530, 100, 25);
 		tf3.setEditable(false);
-
+		//가입과 로그인버튼
 		b1 = new Button("Login");
 		b1.setBounds(210, 490, 50, 25);
 		b2 = new Button("Create");

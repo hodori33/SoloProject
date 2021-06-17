@@ -7,17 +7,17 @@ import java.io.IOException;
 import java.io.Reader;
 import java.nio.charset.StandardCharsets;
 
-public class SqlDbMaker {
+public class SqlDb {
 	private MemberDAO dao = new MemberDAO();
 
-	public SqlDbMaker() {
+	public SqlDb() {
 		BufferedReader reader = null;
 		Reader r = null;
 		String temp = "";
 
 		String name, data;
 		try {
-			r = new FileReader("C:\\Users\\hodori\\Desktop\\db만들기\\Sql.txt", StandardCharsets.UTF_8);
+			r = new FileReader("G:\\Java\\SoloProject3\\src\\Sql.txt", StandardCharsets.UTF_8);
 			reader = new BufferedReader(r);
 
 			dao.createTable("sql"); // sqlTable생성

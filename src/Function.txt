@@ -1,0 +1,598 @@
+Object
+java.lang.Object
+protected Object	clone()
+Creates and returns a copy of this object.
+boolean	equals(Object obj)
+Indicates whether some other object is "equal to" this one.
+protected void	finalize()
+Called by the garbage collector on an object when garbage collection determines that there are no more references to the object.
+Class<?>	getClass()
+Returns the runtime class of this Object.
+int	hashCode()
+Returns a hash code value for the object.
+void	notify()
+Wakes up a single thread that is waiting on this object monitor.
+void	notifyAll()
+Wakes up all threads that are waiting on this object monitor.
+String	toString()
+Returns a string representation of the object.
+void	wait()
+Causes the current thread to wait until another thread invokes the notify() method or the notifyAll() method for this object.
+void	wait(long timeout)
+Causes the current thread to wait until either another thread invokes the notify() method or the notifyAll() method for this object, or a specified amount of time has elapsed.
+void	wait(long timeout, int nanos)
+Causes the current thread to wait until another thread invokes the notify() method or the notifyAll() method for this object, or some other thread interrupts the current thread, or a certain amount of real time has elapsed.
+@@
+Arrays
+java.util.Arrays
+static <T> List<T>	asList(T... a)
+Returns a fixed-size list backed by the specified array.
+static int	binarySearch(byte[] a, byte key)
+Searches the specified array of bytes for the specified value using the binary search algorithm.
+static int	binarySearch(byte[] a, int fromIndex, int toIndex, byte key)
+Searches a range of the specified array of bytes for the specified value using the binary search algorithm.
+static int	binarySearch(char[] a, char key)
+Searches the specified array of chars for the specified value using the binary search algorithm.
+static int	binarySearch(char[] a, int fromIndex, int toIndex, char key)
+Searches a range of the specified array of chars for the specified value using the binary search algorithm.
+static int	binarySearch(double[] a, double key)
+Searches the specified array of doubles for the specified value using the binary search algorithm.
+static int	binarySearch(double[] a, int fromIndex, int toIndex, double key)
+Searches a range of the specified array of doubles for the specified value using the binary search algorithm.
+static int	binarySearch(float[] a, float key)
+Searches the specified array of floats for the specified value using the binary search algorithm.
+static int	binarySearch(float[] a, int fromIndex, int toIndex, float key)
+Searches a range of the specified array of floats for the specified value using the binary search algorithm.
+static int	binarySearch(int[] a, int key)
+Searches the specified array of ints for the specified value using the binary search algorithm.
+static int	binarySearch(int[] a, int fromIndex, int toIndex, int key)
+Searches a range of the specified array of ints for the specified value using the binary search algorithm.
+static int	binarySearch(long[] a, int fromIndex, int toIndex, long key)
+Searches a range of the specified array of longs for the specified value using the binary search algorithm.
+static int	binarySearch(long[] a, long key)
+Searches the specified array of longs for the specified value using the binary search algorithm.
+static int	binarySearch(Object[] a, int fromIndex, int toIndex, Object key)
+Searches a range of the specified array for the specified object using the binary search algorithm.
+static int	binarySearch(Object[] a, Object key)
+Searches the specified array for the specified object using the binary search algorithm.
+static int	binarySearch(short[] a, int fromIndex, int toIndex, short key)
+Searches a range of the specified array of shorts for the specified value using the binary search algorithm.
+static int	binarySearch(short[] a, short key)
+Searches the specified array of shorts for the specified value using the binary search algorithm.
+static <T> int	binarySearch(T[] a, int fromIndex, int toIndex, T key, Comparator<? super T> c)
+Searches a range of the specified array for the specified object using the binary search algorithm.
+static <T> int	binarySearch(T[] a, T key, Comparator<? super T> c)
+Searches the specified array for the specified object using the binary search algorithm.
+static boolean[]	copyOf(boolean[] original, int newLength)
+Copies the specified array, truncating or padding with false (if necessary) so the copy has the specified length.
+static byte[]	copyOf(byte[] original, int newLength)
+Copies the specified array, truncating or padding with zeros (if necessary) so the copy has the specified length.
+static char[]	copyOf(char[] original, int newLength)
+Copies the specified array, truncating or padding with null characters (if necessary) so the copy has the specified length.
+static double[]	copyOf(double[] original, int newLength)
+Copies the specified array, truncating or padding with zeros (if necessary) so the copy has the specified length.
+static float[]	copyOf(float[] original, int newLength)
+Copies the specified array, truncating or padding with zeros (if necessary) so the copy has the specified length.
+static int[]	copyOf(int[] original, int newLength)
+Copies the specified array, truncating or padding with zeros (if necessary) so the copy has the specified length.
+static long[]	copyOf(long[] original, int newLength)
+Copies the specified array, truncating or padding with zeros (if necessary) so the copy has the specified length.
+static short[]	copyOf(short[] original, int newLength)
+Copies the specified array, truncating or padding with zeros (if necessary) so the copy has the specified length.
+static <T> T[]	copyOf(T[] original, int newLength)
+Copies the specified array, truncating or padding with nulls (if necessary) so the copy has the specified length.
+static <T,U> T[]	copyOf(U[] original, int newLength, Class<? extends T[]> newType)
+Copies the specified array, truncating or padding with nulls (if necessary) so the copy has the specified length.
+static boolean[]	copyOfRange(boolean[] original, int from, int to)
+Copies the specified range of the specified array into a new array.
+static byte[]	copyOfRange(byte[] original, int from, int to)
+Copies the specified range of the specified array into a new array.
+static char[]	copyOfRange(char[] original, int from, int to)
+Copies the specified range of the specified array into a new array.
+static double[]	copyOfRange(double[] original, int from, int to)
+Copies the specified range of the specified array into a new array.
+static float[]	copyOfRange(float[] original, int from, int to)
+Copies the specified range of the specified array into a new array.
+static int[]	copyOfRange(int[] original, int from, int to)
+Copies the specified range of the specified array into a new array.
+static long[]	copyOfRange(long[] original, int from, int to)
+Copies the specified range of the specified array into a new array.
+static short[]	copyOfRange(short[] original, int from, int to)
+Copies the specified range of the specified array into a new array.
+static <T> T[]	copyOfRange(T[] original, int from, int to)
+Copies the specified range of the specified array into a new array.
+static <T,U> T[]	copyOfRange(U[] original, int from, int to, Class<? extends T[]> newType)
+Copies the specified range of the specified array into a new array.
+static boolean	deepEquals(Object[] a1, Object[] a2)
+Returns true if the two specified arrays are deeply equal to one another.
+static int	deepHashCode(Object[] a)
+Returns a hash code based on the "deep contents" of the specified array.
+static String	deepToString(Object[] a)
+Returns a string representation of the "deep contents" of the specified array.
+static boolean	equals(boolean[] a, boolean[] a2)
+Returns true if the two specified arrays of booleans are equal to one another.
+static boolean	equals(byte[] a, byte[] a2)
+Returns true if the two specified arrays of bytes are equal to one another.
+static boolean	equals(char[] a, char[] a2)
+Returns true if the two specified arrays of chars are equal to one another.
+static boolean	equals(double[] a, double[] a2)
+Returns true if the two specified arrays of doubles are equal to one another.
+static boolean	equals(float[] a, float[] a2)
+Returns true if the two specified arrays of floats are equal to one another.
+static boolean	equals(int[] a, int[] a2)
+Returns true if the two specified arrays of ints are equal to one another.
+static boolean	equals(long[] a, long[] a2)
+Returns true if the two specified arrays of longs are equal to one another.
+static boolean	equals(Object[] a, Object[] a2)
+Returns true if the two specified arrays of Objects are equal to one another.
+static boolean	equals(short[] a, short[] a2)
+Returns true if the two specified arrays of shorts are equal to one another.
+static void	fill(boolean[] a, boolean val)
+Assigns the specified boolean value to each element of the specified array of booleans.
+static void	fill(boolean[] a, int fromIndex, int toIndex, boolean val)
+Assigns the specified boolean value to each element of the specified range of the specified array of booleans.
+static void	fill(byte[] a, byte val)
+Assigns the specified byte value to each element of the specified array of bytes.
+static void	fill(byte[] a, int fromIndex, int toIndex, byte val)
+Assigns the specified byte value to each element of the specified range of the specified array of bytes.
+static void	fill(char[] a, char val)
+Assigns the specified char value to each element of the specified array of chars.
+static void	fill(char[] a, int fromIndex, int toIndex, char val)
+Assigns the specified char value to each element of the specified range of the specified array of chars.
+static void	fill(double[] a, double val)
+Assigns the specified double value to each element of the specified array of doubles.
+static void	fill(double[] a, int fromIndex, int toIndex, double val)
+Assigns the specified double value to each element of the specified range of the specified array of doubles.
+static void	fill(float[] a, float val)
+Assigns the specified float value to each element of the specified array of floats.
+static void	fill(float[] a, int fromIndex, int toIndex, float val)
+Assigns the specified float value to each element of the specified range of the specified array of floats.
+static void	fill(int[] a, int val)
+Assigns the specified int value to each element of the specified array of ints.
+static void	fill(int[] a, int fromIndex, int toIndex, int val)
+Assigns the specified int value to each element of the specified range of the specified array of ints.
+static void	fill(long[] a, int fromIndex, int toIndex, long val)
+Assigns the specified long value to each element of the specified range of the specified array of longs.
+static void	fill(long[] a, long val)
+Assigns the specified long value to each element of the specified array of longs.
+static void	fill(Object[] a, int fromIndex, int toIndex, Object val)
+Assigns the specified Object reference to each element of the specified range of the specified array of Objects.
+static void	fill(Object[] a, Object val)
+Assigns the specified Object reference to each element of the specified array of Objects.
+static void	fill(short[] a, int fromIndex, int toIndex, short val)
+Assigns the specified short value to each element of the specified range of the specified array of shorts.
+static void	fill(short[] a, short val)
+Assigns the specified short value to each element of the specified array of shorts.
+static int	hashCode(boolean[] a)
+Returns a hash code based on the contents of the specified array.
+static int	hashCode(byte[] a)
+Returns a hash code based on the contents of the specified array.
+static int	hashCode(char[] a)
+Returns a hash code based on the contents of the specified array.
+static int	hashCode(double[] a)
+Returns a hash code based on the contents of the specified array.
+static int	hashCode(float[] a)
+Returns a hash code based on the contents of the specified array.
+static int	hashCode(int[] a)
+Returns a hash code based on the contents of the specified array.
+static int	hashCode(long[] a)
+Returns a hash code based on the contents of the specified array.
+static int	hashCode(Object[] a)
+Returns a hash code based on the contents of the specified array.
+static int	hashCode(short[] a)
+Returns a hash code based on the contents of the specified array.
+static void	parallelPrefix(double[] array, DoubleBinaryOperator op)
+Cumulates, in parallel, each element of the given array in place, using the supplied function.
+static void	parallelPrefix(double[] array, int fromIndex, int toIndex, DoubleBinaryOperator op)
+Performs parallelPrefix(double[], DoubleBinaryOperator) for the given subrange of the array.
+static void	parallelPrefix(int[] array, IntBinaryOperator op)
+Cumulates, in parallel, each element of the given array in place, using the supplied function.
+static void	parallelPrefix(int[] array, int fromIndex, int toIndex, IntBinaryOperator op)
+Performs parallelPrefix(int[], IntBinaryOperator) for the given subrange of the array.
+static void	parallelPrefix(long[] array, int fromIndex, int toIndex, LongBinaryOperator op)
+Performs parallelPrefix(long[], LongBinaryOperator) for the given subrange of the array.
+static void	parallelPrefix(long[] array, LongBinaryOperator op)
+Cumulates, in parallel, each element of the given array in place, using the supplied function.
+static <T> void	parallelPrefix(T[] array, BinaryOperator<T> op)
+Cumulates, in parallel, each element of the given array in place, using the supplied function.
+static <T> void	parallelPrefix(T[] array, int fromIndex, int toIndex, BinaryOperator<T> op)
+Performs parallelPrefix(Object[], BinaryOperator) for the given subrange of the array.
+static void	parallelSetAll(double[] array, IntToDoubleFunction generator)
+Set all elements of the specified array, in parallel, using the provided generator function to compute each element.
+static void	parallelSetAll(int[] array, IntUnaryOperator generator)
+Set all elements of the specified array, in parallel, using the provided generator function to compute each element.
+static void	parallelSetAll(long[] array, IntToLongFunction generator)
+Set all elements of the specified array, in parallel, using the provided generator function to compute each element.
+static <T> void	parallelSetAll(T[] array, IntFunction<? extends T> generator)
+Set all elements of the specified array, in parallel, using the provided generator function to compute each element.
+static void	parallelSort(byte[] a)
+Sorts the specified array into ascending numerical order.
+static void	parallelSort(byte[] a, int fromIndex, int toIndex)
+Sorts the specified range of the array into ascending numerical order.
+static void	parallelSort(char[] a)
+Sorts the specified array into ascending numerical order.
+static void	parallelSort(char[] a, int fromIndex, int toIndex)
+Sorts the specified range of the array into ascending numerical order.
+static void	parallelSort(double[] a)
+Sorts the specified array into ascending numerical order.
+static void	parallelSort(double[] a, int fromIndex, int toIndex)
+Sorts the specified range of the array into ascending numerical order.
+static void	parallelSort(float[] a)
+Sorts the specified array into ascending numerical order.
+static void	parallelSort(float[] a, int fromIndex, int toIndex)
+Sorts the specified range of the array into ascending numerical order.
+static void	parallelSort(int[] a)
+Sorts the specified array into ascending numerical order.
+static void	parallelSort(int[] a, int fromIndex, int toIndex)
+Sorts the specified range of the array into ascending numerical order.
+static void	parallelSort(long[] a)
+Sorts the specified array into ascending numerical order.
+static void	parallelSort(long[] a, int fromIndex, int toIndex)
+Sorts the specified range of the array into ascending numerical order.
+static void	parallelSort(short[] a)
+Sorts the specified array into ascending numerical order.
+static void	parallelSort(short[] a, int fromIndex, int toIndex)
+Sorts the specified range of the array into ascending numerical order.
+static <T extends Comparable<? super T>>void		parallelSort(T[] a)
+Sorts the specified array of objects into ascending order, according to the natural ordering of its elements.
+static <T> void	parallelSort(T[] a, Comparator<? super T> cmp)
+Sorts the specified array of objects according to the order induced by the specified comparator.
+static <T extends Comparable<? super T>>void		parallelSort(T[] a, int fromIndex, int toIndex)
+Sorts the specified range of the specified array of objects into ascending order, according to the natural ordering of its elements.
+static <T> void	parallelSort(T[] a, int fromIndex, int toIndex, Comparator<? super T> cmp)
+Sorts the specified range of the specified array of objects according to the order induced by the specified comparator.
+static void	setAll(double[] array, IntToDoubleFunction generator)
+Set all elements of the specified array, using the provided generator function to compute each element.
+static void	setAll(int[] array, IntUnaryOperator generator)
+Set all elements of the specified array, using the provided generator function to compute each element.
+static void	setAll(long[] array, IntToLongFunction generator)
+Set all elements of the specified array, using the provided generator function to compute each element.
+static <T> void	setAll(T[] array, IntFunction<? extends T> generator)
+Set all elements of the specified array, using the provided generator function to compute each element.
+static void	sort(byte[] a)
+Sorts the specified array into ascending numerical order.
+static void	sort(byte[] a, int fromIndex, int toIndex)
+Sorts the specified range of the array into ascending order.
+static void	sort(char[] a)
+Sorts the specified array into ascending numerical order.
+static void	sort(char[] a, int fromIndex, int toIndex)
+Sorts the specified range of the array into ascending order.
+static void	sort(double[] a)
+Sorts the specified array into ascending numerical order.
+static void	sort(double[] a, int fromIndex, int toIndex)
+Sorts the specified range of the array into ascending order.
+static void	sort(float[] a)
+Sorts the specified array into ascending numerical order.
+static void	sort(float[] a, int fromIndex, int toIndex)
+Sorts the specified range of the array into ascending order.
+static void	sort(int[] a)
+Sorts the specified array into ascending numerical order.
+static void	sort(int[] a, int fromIndex, int toIndex)
+Sorts the specified range of the array into ascending order.
+static void	sort(long[] a)
+Sorts the specified array into ascending numerical order.
+static void	sort(long[] a, int fromIndex, int toIndex)
+Sorts the specified range of the array into ascending order.
+static void	sort(Object[] a)
+Sorts the specified array of objects into ascending order, according to the natural ordering of its elements.
+static void	sort(Object[] a, int fromIndex, int toIndex)
+Sorts the specified range of the specified array of objects into ascending order, according to the natural ordering of its elements.
+static void	sort(short[] a)
+Sorts the specified array into ascending numerical order.
+static void	sort(short[] a, int fromIndex, int toIndex)
+Sorts the specified range of the array into ascending order.
+static <T> void	sort(T[] a, Comparator<? super T> c)
+Sorts the specified array of objects according to the order induced by the specified comparator.
+static <T> void	sort(T[] a, int fromIndex, int toIndex, Comparator<? super T> c)
+Sorts the specified range of the specified array of objects according to the order induced by the specified comparator.
+static Spliterator.OfDouble	spliterator(double[] array)
+Returns a Spliterator.OfDouble covering all of the specified array.
+static Spliterator.OfDouble	spliterator(double[] array, int startInclusive, int endExclusive)
+Returns a Spliterator.OfDouble covering the specified range of the specified array.
+static Spliterator.OfInt	spliterator(int[] array)
+Returns a Spliterator.OfInt covering all of the specified array.
+static Spliterator.OfInt	spliterator(int[] array, int startInclusive, int endExclusive)
+Returns a Spliterator.OfInt covering the specified range of the specified array.
+static Spliterator.OfLong	spliterator(long[] array)
+Returns a Spliterator.OfLong covering all of the specified array.
+static Spliterator.OfLong	spliterator(long[] array, int startInclusive, int endExclusive)
+Returns a Spliterator.OfLong covering the specified range of the specified array.
+static <T> Spliterator<T>	spliterator(T[] array)
+Returns a Spliterator covering all of the specified array.
+static <T> Spliterator<T>	spliterator(T[] array, int startInclusive, int endExclusive)
+Returns a Spliterator covering the specified range of the specified array.
+static DoubleStream	stream(double[] array)
+Returns a sequential DoubleStream with the specified array as its source.
+static DoubleStream	stream(double[] array, int startInclusive, int endExclusive)
+Returns a sequential DoubleStream with the specified range of the specified array as its source.
+static IntStream	stream(int[] array)
+Returns a sequential IntStream with the specified array as its source.
+static IntStream	stream(int[] array, int startInclusive, int endExclusive)
+Returns a sequential IntStream with the specified range of the specified array as its source.
+static LongStream	stream(long[] array)
+Returns a sequential LongStream with the specified array as its source.
+static LongStream	stream(long[] array, int startInclusive, int endExclusive)
+Returns a sequential LongStream with the specified range of the specified array as its source.
+static <T> Stream<T>	stream(T[] array)
+Returns a sequential Stream with the specified array as its source.
+static <T> Stream<T>	stream(T[] array, int startInclusive, int endExclusive)
+Returns a sequential Stream with the specified range of the specified array as its source.
+static String	toString(boolean[] a)
+Returns a string representation of the contents of the specified array.
+static String	toString(byte[] a)
+Returns a string representation of the contents of the specified array.
+static String	toString(char[] a)
+Returns a string representation of the contents of the specified array.
+static String	toString(double[] a)
+Returns a string representation of the contents of the specified array.
+static String	toString(float[] a)
+Returns a string representation of the contents of the specified array.
+static String	toString(int[] a)
+Returns a string representation of the contents of the specified array.
+static String	toString(long[] a)
+Returns a string representation of the contents of the specified array.
+static String	toString(Object[] a)
+Returns a string representation of the contents of the specified array.
+static String	toString(short[] a)
+Returns a string representation of the contents of the specified array.
+@@
+Calendar
+java.util.Calendar
+abstract void	add(int field, int amount)
+Adds or subtracts the specified amount of time to the given calendar field, based on the calendar rules.
+boolean	after(Object when)
+Returns whether this Calendar represents a time after the time represented by the specified Object.
+boolean	before(Object when)
+Returns whether this Calendar represents a time before the time represented by the specified Object.
+void	clear()
+Sets all the calendar field values and the time value (millisecond offset from the Epoch) of this Calendar undefined.
+void	clear(int field)
+Sets the given calendar field value and the time value (millisecond offset from the Epoch) of this Calendar undefined.
+Object	clone()
+Creates and returns a copy of this object.
+int	compareTo(Calendar anotherCalendar)
+Compares the time values (millisecond offsets from the Epoch) represented by two Calendar objects.
+protected void	complete()
+Fills in any unset fields in the calendar fields.
+protected abstract void	computeFields()
+Converts the current millisecond time value time to calendar field values in fields[].
+protected abstract void	computeTime()
+Converts the current calendar field values in fields[] to the millisecond time value time.
+boolean	equals(Object obj)
+Compares this Calendar to the specified Object.
+int	get(int field)
+Returns the value of the given calendar field.
+int	getActualMaximum(int field)
+Returns the maximum value that the specified calendar field could have, given the time value of this Calendar.
+int	getActualMinimum(int field)
+Returns the minimum value that the specified calendar field could have, given the time value of this Calendar.
+static Set<String>	getAvailableCalendarTypes()
+Returns an unmodifiable Set containing all calendar types supported by Calendar in the runtime environment.
+static Locale[]	getAvailableLocales()
+Returns an array of all locales for which the getInstance methods of this class can return localized instances.
+String	getCalendarType()
+Returns the calendar type of this Calendar.
+String	getDisplayName(int field, int style, Locale locale)
+Returns the string representation of the calendar field value in the given style and locale.
+Map<String,Integer>	getDisplayNames(int field, int style, Locale locale)
+Returns a Map containing all names of the calendar field in the given style and locale and their corresponding field values.
+int	getFirstDayOfWeek()
+Gets what the first day of the week is; e.g., SUNDAY in the U.S., MONDAY in France.
+abstract int	getGreatestMinimum(int field)
+Returns the highest minimum value for the given calendar field of this Calendar instance.
+static Calendar	getInstance()
+Gets a calendar using the default time zone and locale.
+static Calendar	getInstance(Locale aLocale)
+Gets a calendar using the default time zone and specified locale.
+static Calendar	getInstance(TimeZone zone)
+Gets a calendar using the specified time zone and default locale.
+static Calendar	getInstance(TimeZone zone, Locale aLocale)
+Gets a calendar with the specified time zone and locale.
+abstract int	getLeastMaximum(int field)
+Returns the lowest maximum value for the given calendar field of this Calendar instance.
+abstract int	getMaximum(int field)
+Returns the maximum value for the given calendar field of this Calendar instance.
+int	getMinimalDaysInFirstWeek()
+Gets what the minimal days required in the first week of the year are; e.g., if the first week is defined as one that contains the first day of the first month of a year, this method returns 1.
+abstract int	getMinimum(int field)
+Returns the minimum value for the given calendar field of this Calendar instance.
+Date	getTime()
+Returns a Date object representing this Calendar time value (millisecond offset from the Epoch").
+long	getTimeInMillis()
+Returns this Calendar time value in milliseconds.
+TimeZone	getTimeZone()
+Gets the time zone.
+int	getWeeksInWeekYear()
+Returns the number of weeks in the week year represented by this Calendar.
+int	getWeekYear()
+Returns the week year represented by this Calendar.
+int	hashCode()
+Returns a hash code for this calendar.
+protected int	internalGet(int field)
+Returns the value of the given calendar field.
+boolean	isLenient()
+Tells whether date/time interpretation is to be lenient.
+boolean	isSet(int field)
+Determines if the given calendar field has a value set, including cases that the value has been set by internal fields calculations triggered by a get method call.
+boolean	isWeekDateSupported()
+Returns whether this Calendar supports week dates.
+abstract void	roll(int field, boolean up)
+Adds or subtracts (up/down) a single unit of time on the given time field without changing larger fields.
+void	roll(int field, int amount)
+Adds the specified (signed) amount to the specified calendar field without changing larger fields.
+void	set(int field, int value)
+Sets the given calendar field to the given value.
+void	set(int year, int month, int date)
+Sets the values for the calendar fields YEAR, MONTH, and DAY_OF_MONTH.
+void	set(int year, int month, int date, int hourOfDay, int minute)
+Sets the values for the calendar fields YEAR, MONTH, DAY_OF_MONTH, HOUR_OF_DAY, and MINUTE.
+void	set(int year, int month, int date, int hourOfDay, int minute, int second)
+Sets the values for the fields YEAR, MONTH, DAY_OF_MONTH, HOUR_OF_DAY, MINUTE, and SECOND.
+void	setFirstDayOfWeek(int value)
+Sets what the first day of the week is; e.g., SUNDAY in the U.S., MONDAY in France.
+void	setLenient(boolean lenient)
+Specifies whether or not date/time interpretation is to be lenient.
+void	setMinimalDaysInFirstWeek(int value)
+Sets what the minimal days required in the first week of the year are; For example, if the first week is defined as one that contains the first day of the first month of a year, call this method with value 1.
+void	setTime(Date date)
+Sets this Calendar time with the given Date.
+void	setTimeInMillis(long millis)
+Sets this Calendar current time from the given long value.
+void	setTimeZone(TimeZone value)
+Sets the time zone with the given time zone value.
+void	setWeekDate(int weekYear, int weekOfYear, int dayOfWeek)
+Sets the date of this Calendar with the the given date specifiers - week year, week of year, and day of week.
+Instant	toInstant()
+Converts this object to an Instant.
+String	toString()
+Return a string representation of this calendar.
+@@
+Math
+java.lang.Math
+static double	abs(double a)
+Returns the absolute value of a double value.
+static float	abs(float a)
+Returns the absolute value of a float value.
+static int	abs(int a)
+Returns the absolute value of an int value.
+static long	abs(long a)
+Returns the absolute value of a long value.
+static double	acos(double a)
+Returns the arc cosine of a value; the returned angle is in the range 0.0 through pi.
+static int	addExact(int x, int y)
+Returns the sum of its arguments, throwing an exception if the result overflows an int.
+static long	addExact(long x, long y)
+Returns the sum of its arguments, throwing an exception if the result overflows a long.
+static double	asin(double a)
+Returns the arc sine of a value; the returned angle is in the range -pi/2 through pi/2.
+static double	atan(double a)
+Returns the arc tangent of a value; the returned angle is in the range -pi/2 through pi/2.
+static double	atan2(double y, double x)
+Returns the angle theta from the conversion of rectangular coordinates (x, y) to polar coordinates (r, theta).
+static double	cbrt(double a)
+Returns the cube root of a double value.
+static double	ceil(double a)
+Returns the smallest (closest to negative infinity) double value that is greater than or equal to the argument and is equal to a mathematical integer.
+static double	copySign(double magnitude, double sign)
+Returns the first floating-point argument with the sign of the second floating-point argument.
+static float	copySign(float magnitude, float sign)
+Returns the first floating-point argument with the sign of the second floating-point argument.
+static double	cos(double a)
+Returns the trigonometric cosine of an angle.
+static double	cosh(double x)
+Returns the hyperbolic cosine of a double value.
+static int	decrementExact(int a)
+Returns the argument decremented by one, throwing an exception if the result overflows an int.
+static long	decrementExact(long a)
+Returns the argument decremented by one, throwing an exception if the result overflows a long.
+static double	exp(double a)
+Returns Euler number e raised to the power of a double value.
+static double	expm1(double x)
+Returns ex -1.
+static double	floor(double a)
+Returns the largest (closest to positive infinity) double value that is less than or equal to the argument and is equal to a mathematical integer.
+static int	floorDiv(int x, int y)
+Returns the largest (closest to positive infinity) int value that is less than or equal to the algebraic quotient.
+static long	floorDiv(long x, long y)
+Returns the largest (closest to positive infinity) long value that is less than or equal to the algebraic quotient.
+static int	floorMod(int x, int y)
+Returns the floor modulus of the int arguments.
+static long	floorMod(long x, long y)
+Returns the floor modulus of the long arguments.
+static int	getExponent(double d)
+Returns the unbiased exponent used in the representation of a double.
+static int	getExponent(float f)
+Returns the unbiased exponent used in the representation of a float.
+static double	hypot(double x, double y)
+Returns sqrt(x2 +y2) without intermediate overflow or underflow.
+static double	IEEEremainder(double f1, double f2)
+Computes the remainder operation on two arguments as prescribed by the IEEE 754 standard.
+static int	incrementExact(int a)
+Returns the argument incremented by one, throwing an exception if the result overflows an int.
+static long	incrementExact(long a)
+Returns the argument incremented by one, throwing an exception if the result overflows a long.
+static double	log(double a)
+Returns the natural logarithm (base e) of a double value.
+static double	log10(double a)
+Returns the base 10 logarithm of a double value.
+static double	log1p(double x)
+Returns the natural logarithm of the sum of the argument and 1.
+static double	max(double a, double b)
+Returns the greater of two double values.
+static float	max(float a, float b)
+Returns the greater of two float values.
+static int	max(int a, int b)
+Returns the greater of two int values.
+static long	max(long a, long b)
+Returns the greater of two long values.
+static double	min(double a, double b)
+Returns the smaller of two double values.
+static float	min(float a, float b)
+Returns the smaller of two float values.
+static int	min(int a, int b)
+Returns the smaller of two int values.
+static long	min(long a, long b)
+Returns the smaller of two long values.
+static int	multiplyExact(int x, int y)
+Returns the product of the arguments, throwing an exception if the result overflows an int.
+static long	multiplyExact(long x, long y)
+Returns the product of the arguments, throwing an exception if the result overflows a long.
+static int	negateExact(int a)
+Returns the negation of the argument, throwing an exception if the result overflows an int.
+static long	negateExact(long a)
+Returns the negation of the argument, throwing an exception if the result overflows a long.
+static double	nextAfter(double start, double direction)
+Returns the floating-point number adjacent to the first argument in the direction of the second argument.
+static float	nextAfter(float start, double direction)
+Returns the floating-point number adjacent to the first argument in the direction of the second argument.
+static double	nextDown(double d)
+Returns the floating-point value adjacent to d in the direction of negative infinity.
+static float	nextDown(float f)
+Returns the floating-point value adjacent to f in the direction of negative infinity.
+static double	nextUp(double d)
+Returns the floating-point value adjacent to d in the direction of positive infinity.
+static float	nextUp(float f)
+Returns the floating-point value adjacent to f in the direction of positive infinity.
+static double	pow(double a, double b)
+Returns the value of the first argument raised to the power of the second argument.
+static double	random()
+Returns a double value with a positive sign, greater than or equal to 0.0 and less than 1.0.
+static double	rint(double a)
+Returns the double value that is closest in value to the argument and is equal to a mathematical integer.
+static long	round(double a)
+Returns the closest long to the argument, with ties rounding to positive infinity.
+static int	round(float a)
+Returns the closest int to the argument, with ties rounding to positive infinity.
+static double	scalb(double d, int scaleFactor)
+Returns d × 2scaleFactor rounded as if performed by a single correctly rounded floating-point multiply to a member of the double value set.
+static float	scalb(float f, int scaleFactor)
+Returns f × 2scaleFactor rounded as if performed by a single correctly rounded floating-point multiply to a member of the float value set.
+static double	signum(double d)
+Returns the signum function of the argument; zero if the argument is zero, 1.0 if the argument is greater than zero, -1.0 if the argument is less than zero.
+static float	signum(float f)
+Returns the signum function of the argument; zero if the argument is zero, 1.0f if the argument is greater than zero, -1.0f if the argument is less than zero.
+static double	sin(double a)
+Returns the trigonometric sine of an angle.
+static double	sinh(double x)
+Returns the hyperbolic sine of a double value.
+static double	sqrt(double a)
+Returns the correctly rounded positive square root of a double value.
+static int	subtractExact(int x, int y)
+Returns the difference of the arguments, throwing an exception if the result overflows an int.
+static long	subtractExact(long x, long y)
+Returns the difference of the arguments, throwing an exception if the result overflows a long.
+static double	tan(double a)
+Returns the trigonometric tangent of an angle.
+static double	tanh(double x)
+Returns the hyperbolic tangent of a double value.
+static double	toDegrees(double angrad)
+Converts an angle measured in radians to an approximately equivalent angle measured in degrees.
+static int	toIntExact(long value)
+Returns the value of the long argument; throwing an exception if the value overflows an int.
+static double	toRadians(double angdeg)
+Converts an angle measured in degrees to an approximately equivalent angle measured in radians.
+static double	ulp(double d)
+Returns the size of an ulp of the argument.
+static float	ulp(float f)
+Returns the size of an ulp of the argument.
+@@

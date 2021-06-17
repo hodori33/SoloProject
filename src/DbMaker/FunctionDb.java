@@ -8,15 +8,15 @@ import java.io.Reader;
 import java.nio.charset.StandardCharsets;
 import java.util.StringTokenizer;
 
-public class FunctionDbMaker {
+public class FunctionDb {
 	private MemberDAO dao = new MemberDAO();
 
-	public FunctionDbMaker() {
+	public FunctionDb() {
 		BufferedReader reader = null;
 		Reader r = null;
 		String table = null, name = null, temp = null, data1 = null, data2 = null;
 		try {
-			r = new FileReader("C:\\Users\\hodori\\Desktop\\db만들기\\Function.txt", StandardCharsets.UTF_8);
+			r = new FileReader("G:\\Java\\SoloProject3\\src\\Function.txt", StandardCharsets.UTF_8);
 			reader = new BufferedReader(r);
 			dao.createTable("function");
 			while (true) {

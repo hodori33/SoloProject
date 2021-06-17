@@ -7,17 +7,17 @@ import java.io.IOException;
 import java.io.Reader;
 import java.nio.charset.StandardCharsets;
 
-public class TermDbMaker {
+public class TermDb {
 	private MemberDAO dao = new MemberDAO();
 
-	public TermDbMaker() {
+	public TermDb() {
 		BufferedReader reader = null;
 		Reader r = null;
 		String temp = "";
 
 		String name, data;
 		try {
-			r = new FileReader("C:\\Users\\hodori\\Desktop\\db만들기\\Term.txt", StandardCharsets.UTF_8);
+			r = new FileReader("G:\\Java\\SoloProject3\\src\\Term.txt", StandardCharsets.UTF_8);
 			reader = new BufferedReader(r);
 			dao.createTable("term"); // TermTable생성
 

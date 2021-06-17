@@ -3,10 +3,10 @@ package Login;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import DbMaker.FunctionDbMaker;
+import DbMaker.FunctionDb;
 import DbMaker.MemberDAO;
-import DbMaker.SqlDbMaker;
-import DbMaker.TermDbMaker;
+import DbMaker.SqlDb;
+import DbMaker.TermDb;
 
 public class LoginButton implements ActionListener {
 	private MemberDAO dao;
@@ -44,9 +44,9 @@ public class LoginButton implements ActionListener {
 		}
 		if (e.getActionCommand().equals("DB생성")) {
 			dao.baseDB();
-			new SqlDbMaker();
-			new TermDbMaker();
-			new FunctionDbMaker();
+			new SqlDb();
+			new TermDb();
+			new FunctionDb();
 		}
 		if (e.getActionCommand().equals("DB삭제")) {
 			dao.removeAll();
