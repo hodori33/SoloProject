@@ -5,11 +5,11 @@ import DbMaker.MemberDAO;
 
 abstract class BasePanel {
 
-	protected Panel nameP, contentsP, serchP;
-	protected Button homeB, userB, logoutB, compileB, serchB, closeB, b[];
+	protected Panel nameP, contentsP, searchP;
+	protected Button homeB, userB, logoutB, compileB, searchB, closeB, b[];
 	protected Font font1, font2;
-	protected Choice c1, c2, serchC;
-	protected TextField serchTf;
+	protected Choice c1, c2, searchC;
+	protected TextField searchTf;
 	protected TextArea conTa;
 	protected Label lb;
 	protected MemberDAO dao;
@@ -31,11 +31,11 @@ abstract class BasePanel {
 	}
 
 	// 검색 패널
-	protected void serchP() {
-		serchP.setLayout(null);
-		serchP.setBounds(10, 90, 660, 520);
-		serchP.setBackground(Color.yellow);
-		serchP.setVisible(OnOff2);
+	protected void searchP() {
+		searchP.setLayout(null);
+		searchP.setBounds(10, 90, 660, 520);
+		searchP.setBackground(Color.yellow);
+		searchP.setVisible(OnOff2);
 	}
 
 	// 홈 버튼
@@ -63,8 +63,8 @@ abstract class BasePanel {
 	}
 
 	// 검색 버튼
-	protected void serchB() {
-		serchB.setBounds(580, 60, 50, 25);
+	protected void searchB() {
+		searchB.setBounds(580, 60, 50, 25);
 	}
 
 	// 닫기 버튼
@@ -86,16 +86,16 @@ abstract class BasePanel {
 	}
 
 	// 검색 종류
-	protected void serchC() {
-		serchC.add("제목");
-		serchC.setBounds(520, 60, 50, 25);
+	protected void searchC() {
+		searchC.add("제목");
+		searchC.setBounds(520, 60, 50, 25);
 	}
 
 	// 검색창
-	protected void serchTf() {
-		serchTf.setFont(font1);
-		serchTf.selectAll();
-		serchTf.setBounds(520, 30, 100, 25);
+	protected void searchTf() {
+		searchTf.setFont(font1);
+		searchTf.selectAll();
+		searchTf.setBounds(520, 30, 100, 25);
 	}
 
 	// 내용textarea
@@ -115,6 +115,6 @@ abstract class BasePanel {
 	// 패널 교체
 	protected void panelOnOff() {
 		contentsP.setVisible(!OnOff1);
-		serchP.setVisible(!OnOff2);
+		searchP.setVisible(!OnOff2);
 	}
 }

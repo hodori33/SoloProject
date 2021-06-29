@@ -33,7 +33,7 @@ public class Login extends WindowAdapter {
 		loginF.addWindowListener(this);
 		loginF.setBackground(Color.green);
 		font1 = new Font("고딕", Font.CENTER_BASELINE, 15);
-		font2 = new Font("고딕", Font.CENTER_BASELINE, 30);
+		font2 = new Font("고딕", Font.CENTER_BASELINE, 15);
 		//제목 라벨
 		nameLb = new Label("Java Dictionary");
 		nameLb.setBounds(95, 120, 240, 70);

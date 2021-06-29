@@ -35,7 +35,7 @@ public class UserPanel {
 
 		// 목록조회후 버튼추가
 		dao = new MemberDAO();
-		list = dao.serch_List();
+		list = dao.search_List();
 		if (list != null) {
 			b = new Button[list.size()];
 			wordLb = new Label[list.size()];
@@ -64,7 +64,7 @@ public class UserPanel {
 				j += 2;
 			}
 
-			list = dao.serch_Count();
+			list = dao.search_Count();
 			System.out.println(list.size());
 			countLb = new Label[list.size()];
 			for (int i = 0; i < list.size(); i++) {

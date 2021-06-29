@@ -175,14 +175,14 @@ public class ActButton implements ActionListener {
 
 		if (e.getActionCommand().equals("x")) {
 			MemberDAO dao = new MemberDAO();
-			dao.serch_List_Remove(lb1.getText());
+			dao.search_List_Remove(lb1.getText());
 			b1.setVisible(false);
 			lb1.setVisible(false);
 			lb2.setVisible(false);
 		}
 		if (e.getActionCommand().equals("모두 지우기")) {
 			MemberDAO dao = new MemberDAO();
-			dao.serch_List_AllRemove();
+			dao.search_List_AllRemove();
 			p1.removeAll();
 		}
 		if (e.getActionCommand().equals("새로고침")) {
